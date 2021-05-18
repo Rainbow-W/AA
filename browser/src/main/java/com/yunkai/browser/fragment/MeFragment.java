@@ -123,6 +123,7 @@ public class MeFragment extends Fragment {
         if (context != null) {
             ConnectivityManager mConnectivityManager = (ConnectivityManager) context
                     .getSystemService(Context.CONNECTIVITY_SERVICE);
+            @SuppressLint("MissingPermission")
             NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
             //mNetworkInfo.isAvailable();
             return mNetworkInfo != null;//有网

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TicketCheck.iml" filepath="$PROJECT_DIR$/TicketCheck.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/browser/TicketCheck.browser.iml" filepath="$PROJECT_DIR$/.idea/modules/browser/TicketCheck.browser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/TicketCheck.library.iml" filepath="$PROJECT_DIR$/.idea/modules/library/TicketCheck.library.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+    <!--为原来计时用 先隐藏-->
+    <LinearLayout
+        android:id="@+id/rl_manage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:visibility="gone"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="項目管理"
+            android:textSize="16dp"
+            />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/pic_me"
+            android:layout_marginLeft="5dp"
+            />
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_ic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/tv_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="56dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/account_card"
+            android:textSize="18dp" />
+
+        <RelativeLayout
+            android:id="@+id/rl_ic_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_buy"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:background="@drawable/shape_scan">
+
+            <ImageView
+                android:id="@+id/iv_ic"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/pic_cardic" />
+
+            <Button
+                android:id="@+id/btn_ic"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:layout_toRightOf="@id/iv_ic"
+                android:background="@color/transparent"
+                android:clickable="false"
+                android:text="@string/account_IC"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_red_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_ic_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/shape_scan">
+
+            <ImageView
+                android:id="@+id/iv_scan"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/pic_cardscan" />
+
+            <Button
+                android:id="@+id/btn_scan_card"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:layout_toRightOf="@id/iv_scan"
+                android:background="@color/transparent"
+                android:clickable="false"
+                android:text="@string/account_QR_code"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <!-- 摄像头扫描二维码获取时间  -->
+    <Button
+        android:id="@+id/btn_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/account_scan"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:padding="20dp"
+        android:layout_marginBottom="50dp"
+        android:visibility="gone"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_login_ticket"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="90dp"
+        android:textSize="22dp"
+        android:text="@string/check_login"
+        android:gravity="center"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+
+        />
+
+
+
+</RelativeLayout>

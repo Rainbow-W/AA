@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- 标题栏 -->
+    <Button
+        android:id="@+id/btn_fee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:background="@drawable/shape_scan"
+        android:padding="20dp"
+        android:text="@string/affirm"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+    <!-- 头像栏 -->
+    <RelativeLayout
+        android:id="@+id/rl_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_title"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/tv_ic_clientimg"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center_horizontal"
+            />
+
+    </RelativeLayout>
+    <!-- 会员信息 -->
+    <RelativeLayout
+        android:id="@+id/rl_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_image"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/shape_account_info"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/tv_ic_endtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_ic_cardstate"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/tv_ic_cardstate"
+            android:text="卡有效期"
+            android:textColor="#FF0000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_ic_cardtype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:maxLines="1"
+            android:text="卡类型:"
+            android:textColor="#FF0000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_ic_cardstate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_ic_cardtype"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/tv_ic_cardtype"
+            android:text="卡状态"
+            android:textColor="#FF0000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_ic_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_ic_endtime"
+            android:layout_marginTop="10dp"
+            android:maxLines="1"
+            android:text="卡號:"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_ic_clientname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_ic_num"
+            android:layout_alignBottom="@id/tv_ic_clientphone"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/tv_ic_clientphone"
+            android:maxLines="1"
+            android:text="姓名:"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_ic_clientphone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_ic_num"
+            android:layout_marginTop="10dp"
+            android:maxLines="1"
+            android:text="手机号:"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_yu_e"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_ic_clientphone"
+            android:layout_marginTop="10dp"
+            android:text="餘額:10000.00元"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_ji_fen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_ic_clientphone"
+            android:layout_alignBottom="@id/tv_yu_e"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/tv_yu_e"
+            android:maxLines="1"
+            android:text="積分:10000"
+            android:textSize="16sp" />
+
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="5dp">
+
+        <include layout="@layout/content_main" />
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/aide">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="3dp"
+            android:src="@drawable/set_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="55dp"
+            android:text="爱德科技-景区游乐园运营专家"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <!-- 确认扣费/核销 -->
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_account"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/Select_the_tickets"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_count_fee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_fee"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:text="总金额："
+        android:textSize="18sp" />
+
+</RelativeLayout>

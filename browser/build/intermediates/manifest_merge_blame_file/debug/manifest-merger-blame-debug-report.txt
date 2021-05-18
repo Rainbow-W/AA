@@ -1,0 +1,202 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.aidegroup.ticket"
+4    android:versionCode="1"
+5    android:versionName="1.0.1" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+8-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml
+10
+11    <uses-feature android:name="android.hardware.camera" />
+11-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:69:5-60
+11-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:69:19-57
+12    <uses-feature android:name="android.hardware.camera.autofocus" />
+12-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:70:5-70
+12-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:70:19-67
+13
+14    <!-- 硬件支持 -->
+15    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+15-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:73:5-75:47
+15-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:74:9-70
+16    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+16-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:73:5-75:47
+16-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:74:9-70
+17    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+17-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:81:5-75
+17-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:81:22-72
+18
+19    <!-- NFC权限声明 -->
+20    <uses-permission android:name="android.permission.VIBRATE" />
+20-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:84:5-66
+20-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:84:22-63
+21    <uses-permission android:name="android.permission.NFC" />
+21-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:86:5-62
+21-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:86:22-59
+22    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+22-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:87:5-89:40
+22-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:88:9-65
+23    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+23-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:90:5-79
+23-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:90:22-76
+24    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+24-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:91:5-76
+24-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:91:22-73
+25    <uses-permission android:name="android.permission.INTERNET" />
+25-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:92:5-67
+25-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:92:22-64
+26    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+26-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:81:5-75
+26-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:81:22-72
+27    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+27-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:94:5-96:47
+27-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:95:9-68
+28    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+28-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:97:5-80
+28-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:97:22-77
+29    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+29-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:98:5-71
+29-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:98:22-68
+30    <uses-permission android:name="android.permission.CAMERA" />
+30-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:99:5-65
+30-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:99:22-62
+31    <uses-permission android:name="android.permission.WAKE_LOCK" />
+31-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:100:5-68
+31-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:100:22-65
+32    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+32-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:101:5-80
+32-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:101:22-77
+33
+34    <!-- 二维码扫描相关权限 -->
+35    <uses-permission android:name="android.permission.MOUNT_FORMAT_FILESYSTEMS" />
+35-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:104:5-106:47
+35-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:105:9-67
+36    <!-- 闪光灯 -->
+37    <uses-permission android:name="android.permission.VIBRATE" />
+37-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:84:5-66
+37-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:84:22-63
+38    <!-- 多媒体相关 -->
+39    <uses-permission android:name="android.permission.FLASHLIGHT" />
+39-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:110:5-69
+39-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:110:22-66
+40    <uses-permission android:name="android.permission.CAMERA" />
+40-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:99:5-65
+40-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:99:22-62
+41    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+41-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:101:5-80
+41-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:101:22-77
+42    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+42-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:87:5-89:40
+42-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:88:9-65
+43    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+43-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:94:5-96:47
+43-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:95:9-68
+44
+45    <application
+46        android:name="com.yunkai.browser.Application.MyApplication"
+46-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:9:9-68
+47        android:allowBackup="true"
+47-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:10:9-35
+48        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+48-->[androidx.core:core:1.3.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\429fb715fcc7711d4ab133e350b6f531\core-1.3.0\AndroidManifest.xml:24:18-86
+49        android:debuggable="true"
+50        android:extractNativeLibs="false"
+51        android:hardwareAccelerated="true"
+51-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:11:9-43
+52        android:icon="@drawable/icon"
+52-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:12:9-35
+53        android:label="愛德愛遊樂"
+53-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:14:9-36
+54        android:supportsRtl="true"
+54-->[eu.long1:spacetablayout:1.0.4] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\98b309537b643adf1147b580b6792a72\jetified-spacetablayout-1.0.4\AndroidManifest.xml:29:9-35
+55        android:testOnly="true"
+56        android:theme="@style/WelcomeTheme" >
+56-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:15:9-44
+57
+58        <!--
+59        android:theme="@android:style/Theme.NoTitleBar"
+60        android:theme="@style/AppTheme"
+61        -->
+62
+63        <activity android:name="com.yunkai.browser.activity.WebViewActivity" />
+63-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:21:9-80
+63-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:21:19-77
+64        <activity
+64-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:23:9-30:20
+65            android:name="com.yunkai.browser.activity.PhoneHomeAppActivity"
+65-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:24:13-76
+66            android:screenOrientation="portrait" >
+66-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:25:13-49
+67            <intent-filter>
+67-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:26:13-29:29
+68                <action android:name="android.intent.action.MAIN" />
+68-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:27:17-69
+68-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:27:25-66
+69
+70                <category android:name="android.intent.category.LAUNCHER" />
+70-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:28:17-77
+70-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:28:27-74
+71            </intent-filter>
+72        </activity>
+73        <activity
+73-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:32:9-35:52
+74            android:name="com.yunkai.browser.activity.SearchInfoActivity"
+74-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:33:13-74
+75            android:launchMode="singleInstance"
+75-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:34:13-48
+76            android:screenOrientation="portrait" />
+76-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:35:13-49
+77        <activity
+77-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:38:9-41:52
+78            android:name="com.yunkai.browser.activity.AccountInfoActivity"
+78-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:39:13-75
+79            android:launchMode="singleInstance"
+79-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:40:13-48
+80            android:screenOrientation="portrait" />
+80-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:41:13-49
+81        <activity android:name="com.yunkai.browser.nfc.NFCActivity" />
+81-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:43:9-71
+81-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:43:19-68
+82        <activity android:name="com.yunkai.browser.scan.ScannerActivity" />
+82-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:44:9-76
+82-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:44:19-73
+83
+84        <!-- 二维码相关 -->
+85        <activity
+85-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:47:9-49:52
+86            android:name="com.yunkai.browser.zxing.app.CaptureActivity"
+86-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:48:13-72
+87            android:screenOrientation="portrait" />
+87-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:49:13-49
+88        <activity
+88-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:50:9-52:52
+89            android:name="com.yunkai.browser.zxing.app.PreferencesActivity"
+89-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:51:13-76
+90            android:screenOrientation="portrait" />
+90-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:52:13-49
+91
+92        <!-- 文件管理器相关authorities="你的包名+fileprovider" -->
+93        <!-- 打包两个apk的话，要修改包名 -->
+94        <!-- android:authorities="com.bang.ticket.fileprovider" -->
+95        <provider
+95-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:56:9-64:20
+96            android:name="androidx.core.content.FileProvider"
+96-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:57:13-62
+97            android:authorities="com.aidegroup.ticket.fileprovider"
+97-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:58:13-68
+98            android:exported="false"
+98-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:59:13-37
+99            android:grantUriPermissions="true" >
+99-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:60:13-47
+100            <meta-data
+100-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:61:13-63:53
+101                android:name="android.support.FILE_PROVIDER_PATHS"
+101-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:62:17-67
+102                android:resource="@xml/filepaths" />
+102-->E:\CompanyProject\TicketCheck(20191104)\TicketCheck\browser\src\main\AndroidManifest.xml:63:17-50
+103        </provider>
+104    </application>
+105
+106</manifest>

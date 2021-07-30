@@ -50,8 +50,7 @@ public class ScannerActivity extends BaseActivity implements OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R
-                .layout.activity_scanner_two);
+        setContentView(R.layout.activity_scanner_two);
         initView();
 
         initHandler();
@@ -247,12 +246,12 @@ public class ScannerActivity extends BaseActivity implements OnClickListener {
     }
 
     private void initView() {
-        et_code = (EditText) findViewById(R.id.et_code);
-        btn_scan = (Button) findViewById(R.id.btn_scan);
-        rlScan = (RelativeLayout) findViewById(R.id.rl_scan);
+        et_code = findViewById(R.id.et_code);
+        btn_scan = findViewById(R.id.btn_scan);
+        rlScan = findViewById(R.id.rl_scan);
 
-        btn_clear = (Button) findViewById(R.id.btn_clear);
-        btn_instruction = (Button) findViewById(R.id.btn_instruction);
+        btn_clear = findViewById(R.id.btn_clear);
+        btn_instruction = findViewById(R.id.btn_instruction);
         btn_set = (Button) findViewById(R.id.btn_set);
         tv_receiver = (TextView) findViewById(R.id.tv_receiver);
         tv_send = (TextView) findViewById(R.id.tv_send);

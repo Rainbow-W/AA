@@ -108,7 +108,7 @@ public class MeFragment extends Fragment {
 
             if (!string.isEmpty()) {
                 editor.putBoolean("isUrl", true);
-                editor.putString("Url", "http://" + string);
+                editor.putString("Url", "http://" + string+"qt.aidegroup.cn");
                 editor.commit();
             }
             alertDialog1.dismiss();

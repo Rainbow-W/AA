@@ -39,8 +39,9 @@ import eu.long1.spacetablayout.SpaceTabLayout;
 
 public class PhoneHomeAppActivity extends AppCompatActivity {
 
-    // private RelativeLayout rlTicket, rlCheck, rlMe;
-    // private ImageView iv_ticket, iv_check, iv_me;
+    protected static Context mContext;
+    protected static Activity mActivity;
+
     public ViewPager viewPager;
     public static FragmentPagerAdapter pagerAdapter;
 
@@ -62,7 +63,8 @@ public class PhoneHomeAppActivity extends AppCompatActivity {
         //隐藏状态栏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_homeapp_phone);
-
+        mContext = this;
+        mActivity = this;
         //实例化SharedPreferences对象,参数1是存储文件的名称，参数2是文件的打开方式，当文件不存在时，直接创建，如果存在，则直接使用
         mySharePreferences = getSharedPreferences("aideGroupTicket", Activity.MODE_PRIVATE);
         //实例化SharedPreferences.Editor对象
@@ -104,7 +106,7 @@ public class PhoneHomeAppActivity extends AppCompatActivity {
         viewPager.setAdapter(pagerAdapter);
 
 
-        tabLayout =  findViewById(R.id.spaceTabLayout);
+        tabLayout = findViewById(R.id.spaceTabLayout);
 
         //we need the savedInstanceState to get the position
         tabLayout.initialize(viewPager, getSupportFragmentManager(), fragmentList, savedInstanceState);
@@ -112,9 +114,7 @@ public class PhoneHomeAppActivity extends AppCompatActivity {
         tabLayout.setTabTwoText(getResources().getString(R.string.home_check));
         tabLayout.setTabThreeText(getResources().getString(R.string.home_set));
 
-
-        getIMEI();
-
+        getIMEI(this);
     }
 
 
@@ -165,33 +165,23 @@ public class PhoneHomeAppActivity extends AppCompatActivity {
 
 
     /**
-     * 获取手机IMEI号
+     * 获取CAMERA权限
      */
     @SuppressLint({"HardwareIds", "MissingPermission"})
-    public void getIMEI() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+    public static String getIMEI(Context context) {
+        if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
             //申请CAMERA权限
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, 2);
+            ActivityCompat.requestPermissions(mActivity, new String[]{Manifest.permission.READ_PHONE_STATE}, 2);
         } else {
-            TelephonyManager mTelephony = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+            TelephonyManager mTelephony = (TelephonyManager) mActivity.getSystemService(Context.TELEPHONY_SERVICE);
             assert mTelephony != null;
             if (mTelephony.getDeviceId() != null) {
-                imei = mTelephony.getDeviceId();
+                return mTelephony.getDeviceId();
             } else {
-                imei = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                return Settings.Secure.getString(mContext.getContentResolver(), Settings.Secure.ANDROID_ID);
             }
 
         }
-
+        return null;
     }
-
-    private static String imei;
-
-
-    public static String getIMEI(Context context) {
-        if (context == null) return null;
-        return imei;
-    }
-
-
 }

@@ -165,10 +165,10 @@ public class AccountInfoActivity extends Activity {
 
                 switch (state) {
                     case "0":
-                        tviccardstate.setText("not applicable");
+                        tviccardstate.setText("禁用");
                         break;
                     case "1":
-                        tviccardstate.setText("usable");
+                        tviccardstate.setText("可用");
                         break;
                 }
 

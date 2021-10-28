@@ -100,7 +100,7 @@ public class MeFragment extends Fragment {
     public void UrlInputbox() {
         final EditText inputServer = new EditText(getContext());
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("请输入URL").setView(inputServer)
+        builder.setTitle("请输入服务器URL").setView(inputServer)
                 .setNegativeButton("Cancel", null);
         builder.setPositiveButton("Ok", (dialog, which) -> {
             String string = inputServer.getText().toString();

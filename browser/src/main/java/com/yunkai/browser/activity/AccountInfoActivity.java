@@ -10,6 +10,7 @@ import android.os.Message;
 
 import android.text.Html;
 import android.text.Spanned;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -140,10 +141,10 @@ public class AccountInfoActivity extends Activity {
                 String credit2 = reader.getString("credit2");//余额
                 String realname = reader.getString("realname");//姓名
                 String mobile = reader.getString("mobile");//电话
-                String type = getString(R.string.account_7); //reader.getString("type");//卡类型
+                String type =reader.getString("type");//卡类型
                 String photo = reader.getString("photo");//头像
                 String state = reader.getString("status");//卡状态
-                String endtime = getString(R.string.account_6);//reader.getString("endtime");//有效期
+                String endtime = reader.getString("endtime");//有效期
 
                 tvNum.setText(getResources().getString(R.string.account_1, reader.getString("cardnum")));
                 tvJiFen.setText(getResources().getString(R.string.account_2, credit1));

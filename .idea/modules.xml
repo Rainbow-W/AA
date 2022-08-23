@@ -4,7 +4,13 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TicketCheck.iml" filepath="$PROJECT_DIR$/TicketCheck.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/browser/TicketCheck.browser.iml" filepath="$PROJECT_DIR$/.idea/modules/browser/TicketCheck.browser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/browser/TicketCheck.browser.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/browser/TicketCheck.browser.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/browser/TicketCheck.browser.main.iml" filepath="$PROJECT_DIR$/.idea/modules/browser/TicketCheck.browser.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/browser/TicketCheck.browser.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/browser/TicketCheck.browser.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/TicketCheck.library.iml" filepath="$PROJECT_DIR$/.idea/modules/library/TicketCheck.library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/TicketCheck.library.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/library/TicketCheck.library.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/TicketCheck.library.main.iml" filepath="$PROJECT_DIR$/.idea/modules/library/TicketCheck.library.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/TicketCheck.library.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/library/TicketCheck.library.unitTest.iml" />
     </modules>
   </component>
 </project>

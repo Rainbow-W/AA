@@ -16,7 +16,7 @@
     <string name="home_set">設置</string>
     <string name="home_quit">再按一次退出程序</string>
 
-    <string name="check_scan">二維碼掃描認證</string>
+    <string name="check_scan">掃碼檢票</string>
     <string name="check_search">查詢</string>
     <string name="check_login">請先登錄賬號</string>
     <string name="check_net">請鏈接網絡</string>

@@ -105,7 +105,8 @@
             android:layout_above="@id/rl_scan_check"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="40dp"
-            android:background="@drawable/shape_scan">
+            android:background="@drawable/shape_scan"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/rl_iv_scan_search"

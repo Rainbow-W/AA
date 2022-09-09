@@ -39,16 +39,17 @@
             android:layout_marginTop="30dp"
             android:textSize="18dp"
             />
+
         <EditText
             android:id="@+id/edt_login_name_value"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/tv_login_name"
-            android:hint="@string/me_name_tip"
-            android:layout_marginTop="19dp"
             android:layout_marginLeft="18dp"
-            android:maxLines="1"
-            />
+            android:layout_marginTop="19dp"
+            android:layout_toRightOf="@id/tv_login_name"
+            android:inputType="text"
+            android:hint="@string/me_name_tip"
+            android:maxLines="1" />
         <TextView
             android:id="@+id/tv_login_name_value"
             android:layout_width="wrap_content"
@@ -79,6 +80,7 @@
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/tv_login_ps"
+                android:inputType="text"
                 android:hint="@string/me_pw_tip"
                 android:maxLines="1"
                 />

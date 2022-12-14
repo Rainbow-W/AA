@@ -51,6 +51,7 @@ public class AccountInfoActivity extends Activity {
     List<String> listName = new ArrayList<>();
     ImageView tvicclientimg;
     MediaPlayer playerSuc, playerFai;
+    private String TAG = "AccountInfoActivity";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,21 +62,12 @@ public class AccountInfoActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_account_info);
 
-        info = getIntent().getStringExtra("accountinfo");//cardnum
-        infoTag = getIntent().getStringExtra("accountinfotag");
-
-        // requestReadExternalPermission();
-
-        initView();
-        initData();
-        initListenter();
-
-        playerSuc = MediaPlayer.create(getApplicationContext(), R.raw.chenggong);//声音初始化
-        playerFai = MediaPlayer.create(getApplicationContext(), R.raw.shibai);//声音初始化
 
     }
 
     private void initPullDownMenu(List<String> list) {
+
+        Log.e(TAG, "initPullDownMenu:list " + list);
 
         List<String> stringList = new ArrayList<>();
 
@@ -108,8 +100,14 @@ public class AccountInfoActivity extends Activity {
     }
 
 
-    private void initData() {//获取门票列表
-        initHandler();
+    private void initData() {
+        info = getIntent().getStringExtra("accountinfo");//cardnum
+        infoTag = getIntent().getStringExtra("accountinfotag");
+
+
+        playerSuc = MediaPlayer.create(getApplicationContext(), R.raw.chenggong);//声音初始化
+        playerFai = MediaPlayer.create(getApplicationContext(), R.raw.shibai);//声音初始化
+        //获取门票列表
         new Thread(() -> {
             try {
                 JsonHelp.getTicketList();
@@ -122,10 +120,9 @@ public class AccountInfoActivity extends Activity {
         if (!info.equals("")) {
             try {
                 JSONObject reader = new JSONObject(info);//使用JSONObject解析
-
-                System.out.println("=====================================" + reader);
+                Log.e(TAG, "initData: reader =" + reader);
                 cardnum = reader.getString("cardnum");
-                System.out.println(cardnum + "--------" + cardnum.length());
+                Log.e(TAG, "initData: cardnum = " + cardnum + "--------" + cardnum.length());
                 //cardnum 不够10位的话，要补全为10位数，只有NFC的才需要补全
                 if (infoTag != null && infoTag.equals("NFC")) {
                     for (int i = 0; i < 9; i++) {
@@ -141,7 +138,7 @@ public class AccountInfoActivity extends Activity {
                 String credit2 = reader.getString("credit2");//余额
                 String realname = reader.getString("realname");//姓名
                 String mobile = reader.getString("mobile");//电话
-                String type =reader.getString("type");//卡类型
+                String type = reader.getString("type");//卡类型
                 String photo = reader.getString("photo");//头像
                 String state = reader.getString("status");//卡状态
                 String endtime = reader.getString("endtime");//有效期
@@ -152,17 +149,19 @@ public class AccountInfoActivity extends Activity {
                 tvicclientname.setText(getResources().getString(R.string.account_4, realname));
                 tvicclientphone.setText(getResources().getString(R.string.account_5, mobile));
                 tviccardtype.setText(type);
-                System.out.println("===========photo=========" + photo);
+                Log.e(TAG, "initData: photo = " + photo);
+                if (photo != null) {
+                    Glide.with(this)
+                            .load(photo)
+                            .placeholder(R.drawable.loading)
+                            .into(new SimpleTarget<GlideDrawable>() {
+                                @Override
+                                public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                                    tvicclientimg.setImageDrawable(resource);
+                                }
+                            });
+                }
 
-                Glide.with(this)
-                        .load(photo)
-                        .placeholder(R.drawable.loading)
-                        .into(new SimpleTarget<GlideDrawable>() {
-                            @Override
-                            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                                tvicclientimg.setImageDrawable(resource);
-                            }
-                        });
 
                 switch (state) {
                     case "0":
@@ -186,7 +185,7 @@ public class AccountInfoActivity extends Activity {
         ivBack.setOnClickListener(view -> finish());
         btnFEE.setOnClickListener(view -> {
             new Thread(new JsonHelp(AccountInfoActivity.this, cardnum, chooseId).postThreadICPay).start();//post IC卡支付
-
+            btnFEE.setEnabled(false);
         });
     }
 
@@ -199,13 +198,15 @@ public class AccountInfoActivity extends Activity {
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 listName = (List<String>) msg.obj;
-                initPullDownMenu(listName);
-
-                //设置默认总金额
-                chooseId = listName.get(0).substring(0, listName.get(0).indexOf("*"));//获取对应的id
-                String fee01 = listName.get(0);
-                tvTFee.setText("Total Amount：" + fee01.substring(fee01.indexOf("  "), fee01.length() - 1) + "元");
-
+                Log.e(TAG, "handleMessage: listName" + listName);
+                Log.e(TAG, "handleMessage: listName.size" + listName.size());
+                if (listName != null && listName.size() > 0) {
+                    initPullDownMenu(listName);
+                    //设置默认总金额
+                    chooseId = listName.get(0).substring(0, listName.get(0).indexOf("*"));//获取对应的id
+                    String fee01 = listName.get(0);
+                    tvTFee.setText("总金额：" + fee01.substring(fee01.indexOf("  "), fee01.length() - 1) + "元");
+                }
             }
         };
         handlerTicket = new Handler() {
@@ -218,23 +219,23 @@ public class AccountInfoActivity extends Activity {
                 chooseId = listName.get(i).substring(0, listName.get(i).indexOf("*"));
                 String fee = data.substring(data.indexOf("*") + 1);
 
-                tvTFee.setText("Total Amount:" + fee + "$");
+                tvTFee.setText("总金额:" + fee + "$");
             }
         };
         handlerPay = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
+                int errcode = msg.what;
                 String data = (String) msg.obj;
-                //  Toast.makeText(AccountInfoActivity.this, data, Toast.LENGTH_SHORT).show();
-                if (data.equals("支付成功")) {
+                btnFEE.setEnabled(true);
+                if (errcode == 0) {
                     playerSuc.start();//播放声音
-                    Toast.makeText(AccountInfoActivity.this, "payment success!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountInfoActivity.this, data, Toast.LENGTH_SHORT).show();
                     finish();
                 } else {//支付失败
                     playerFai.start();//播放声音
-                    Toast.makeText(AccountInfoActivity.this, "payment failure!", Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(AccountInfoActivity.this, data, Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -242,5 +243,28 @@ public class AccountInfoActivity extends Activity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        initHandler();
+        initView();
+        initData();
+        initListenter();
+    }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (playerFai != null) {
+            playerFai.release();
+            playerFai = null;
+        }
+
+        if (playerSuc != null) {
+            playerSuc.release();
+            playerSuc = null;
+        }
+
+    }
 }

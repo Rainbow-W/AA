@@ -28,9 +28,7 @@ import android.widget.Toast;
 import com.taicd.browserIP.R;
 import com.yunkai.browser.Application.MyApplication;
 import com.yunkai.browser.activity.AccountInfoActivity;
-import com.yunkai.browser.activity.SearchInfoActivity;
 import com.yunkai.browser.nfc.NFCActivity;
-import com.yunkai.browser.scan.BaseActivity;
 import com.yunkai.browser.scan.ScannerActivity;
 import com.yunkai.browser.utils.NetBroadcastReceiver;
 import com.yunkai.browser.utils.NetEvent;
@@ -45,7 +43,7 @@ public class CheckFragment extends Fragment implements NetEvent {
     public static final int REQUEST_QRCODE = 0x5;
     public static final int REQUEST_QRCODE_NFC = 0x6;
     public static final int REQUEST_QRCODE_SEARCH = 0x7;
-
+    public static String MODULE_FLAG = "module_flag";
 
     Button btnIc, btnScanCard, btnQrcode;
     TextView tip;
@@ -199,15 +197,13 @@ public class CheckFragment extends Fragment implements NetEvent {
                     //查询调用红外方法
                     Intent intent = new Intent(getActivity(),
                             ScannerActivity.class);
-                    intent.putExtra(BaseActivity.MODULE_FLAG, 4);
+                    intent.putExtra(MODULE_FLAG, 4);
                     intent.putExtra("type", "search");
                     startActivityForResult(intent, REQUEST_QRCODE_SEARCH);
                 } else if (((MyApplication) getActivity().getApplication()).func == 1) {
                     //查询调用摄像头方法
                     if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
                             != PackageManager.PERMISSION_GRANTED) {
-                        //申请WRITE_EXTERNAL_STORAGE权限
-                        // ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA},1);
                         requestPermissions(new String[]{Manifest.permission.CAMERA}, 1);
                     } else {
                         Intent i = new Intent(getActivity(), CaptureActivity.class);
@@ -225,15 +221,13 @@ public class CheckFragment extends Fragment implements NetEvent {
                 //检票调用红外方法
                 Intent intent = new Intent(getActivity(),
                         ScannerActivity.class);
-                intent.putExtra(BaseActivity.MODULE_FLAG, 4);
+                intent.putExtra(MODULE_FLAG, 4);
                 intent.putExtra("type", "check");
                 startActivityForResult(intent, REQUEST_QRCODE);
             } else if (((MyApplication) getActivity().getApplication()).func == 1) {
                 //检票调用摄像头方法
                 if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
                         != PackageManager.PERMISSION_GRANTED) {
-                    //申请WRITE_EXTERNAL_STORAGE权限
-                    // ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA},1);
                     requestPermissions(new String[]{Manifest.permission.CAMERA}, 1);
                 } else {
                     Intent i = new Intent(getActivity(), CaptureActivity.class);
@@ -253,15 +247,11 @@ public class CheckFragment extends Fragment implements NetEvent {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 1) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission Granted
                 Intent i = new Intent(getActivity(), CaptureActivity.class);
                 i.putExtra("type", "check");
                 startActivityForResult(i, REQUEST_QRCODE);
             } else {
-                // Permission Denied
-                //  displayFrameworkBugMessageAndExit();
                 Toast.makeText(getActivity(), getResources().getString(R.string.check_open_camera), Toast.LENGTH_LONG).show();
-//                finish();
             }
         }
 
@@ -279,24 +269,9 @@ public class CheckFragment extends Fragment implements NetEvent {
                 if (result.equals(getResources().getString(R.string.check_account_error))) {
                     Toast.makeText(context, getResources().getString(R.string.check_account_error), Toast.LENGTH_LONG).show();
                 } else if (result.contains("{")) {//说明是json
-                    //  System.out.println("-"+result);//
                     Intent ii = new Intent(getActivity(), AccountInfoActivity.class);
                     ii.putExtra("accountinfo", result);
                     startActivity(ii);
-                }
-
-            } else if (requestCode == REQUEST_QRCODE_SEARCH) {
-                String result = data.getExtras().getString("result");//得到新Activity 关闭后返回的数据
-
-                System.out.println("resultCheck------" + result);
-
-                if (result.contains("{")) {
-                    Intent iSearch = new Intent(getActivity(), SearchInfoActivity.class);
-                    iSearch.putExtra("searchinfo", result);
-                    getActivity().startActivity(iSearch);
-
-                } else {
-
                 }
 
             }
@@ -318,28 +293,15 @@ public class CheckFragment extends Fragment implements NetEvent {
                 startActivityForResult(intent, REQUEST_QRCODE);
             }
         });
-        btnScanCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                Intent intent = new Intent(getActivity(),
-                        ScannerActivity.class);
-                intent.putExtra(BaseActivity.MODULE_FLAG, 4);
-                intent.putExtra("type", "check");
-                startActivityForResult(intent, REQUEST_QRCODE);
-         /*
-                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    //申请WRITE_EXTERNAL_STORAGE权限
-                    // ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA},1);
-                    requestPermissions(new String[]{Manifest.permission.CAMERA}, 1);
-                }else{
-                    Intent i= new Intent(getActivity(), CaptureActivity.class);
-                    i.putExtra("type","card");
-                    startActivityForResult(i,REQUEST_QRCODE);
-                }
-*/
-            }
+
+        btnScanCard.setOnClickListener(view -> {
+
+            Intent intent = new Intent(getActivity(),
+                    ScannerActivity.class);
+            intent.putExtra(MODULE_FLAG, 4);
+            intent.putExtra("type", "check");
+            startActivityForResult(intent, REQUEST_QRCODE);
         });
     }
 

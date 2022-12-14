@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-     android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    >
+    android:background="@color/white">
 
     <!--为原来计时用 先隐藏-->
     <LinearLayout
@@ -37,17 +36,8 @@
         android:id="@+id/rl_ic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true">
-
-        <TextView
-            android:id="@+id/tv_buy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="56dp"
-            android:layout_marginBottom="20dp"
-            android:text="@string/account_card"
-            android:textSize="18dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="90dp">
 
         <RelativeLayout
             android:id="@+id/rl_ic_button"
@@ -57,13 +47,6 @@
             android:layout_centerHorizontal="true"
             android:layout_margin="5dp"
             android:background="@drawable/shape_scan">
-
-            <ImageView
-                android:id="@+id/iv_ic"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/pic_cardic" />
 
             <Button
                 android:id="@+id/btn_ic"
@@ -78,6 +61,13 @@
                 android:textColor="@color/white"
                 android:textSize="16dp" />
 
+            <ImageView
+                android:id="@+id/iv_ic"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/pic_cardic" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -88,13 +78,6 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:background="@drawable/shape_scan">
-
-            <ImageView
-                android:id="@+id/iv_scan"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/pic_cardscan" />
 
             <Button
                 android:id="@+id/btn_scan_card"
@@ -108,7 +91,23 @@
                 android:text="@string/account_QR_code"
                 android:textColor="@color/white"
                 android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/iv_scan"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/pic_cardscan" />
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="56dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/account_card"
+            android:textSize="18dp" />
 
     </RelativeLayout>
 

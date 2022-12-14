@@ -1,139 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
-    >
+    android:orientation="vertical">
 
-    <!-- 标题栏 -->
+    <LinearLayout
+        android:id="@+id/ly_titel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rl_scan"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:gravity="center"
+            android:text="@string/scan_tips" />
+    </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/rl_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/aide"
-        >
+        android:background="@color/aide">
+
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_centerVertical="true"
             android:layout_margin="3dp"
-            android:src="@drawable/set_back"
-            />
+            android:src="@drawable/set_back" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/account_title"
-            android:layout_marginLeft="55dp"
             android:layout_centerInParent="true"
-            android:textSize="16sp"
+            android:layout_marginLeft="55dp"
+            android:text="@string/account_title"
             android:textColor="@color/white"
-            />
+            android:textSize="16sp" />
 
     </RelativeLayout>
-
-    <ScrollView
-        android:id="@+id/scrollView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-
-            <EditText
-                android:id="@+id/et_code"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:ems="9"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:selectAllOnFocus="true" >
-
-                <requestFocus />
-            </EditText>
-
-        </LinearLayout>
-    </ScrollView>
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-
-        >
-        <TextView 
-            android:id="@+id/tv_send"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/scan_tips"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            />
-        <TextView 
-            android:id="@+id/tv_receiver"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="R:  "
-            android:visibility="gone"
-            />
-    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/rl_scan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:background="@drawable/shape_scan"
-        >
-        <ImageView
-            android:id="@+id/iv"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/saomiao"
-            android:layout_centerVertical="true"
-            android:layout_margin="10dp"
-            />
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="90dp"
+        android:background="@drawable/shape_scan">
+
         <Button
             android:id="@+id/btn_scan"
             android:layout_width="match_parent"
             android:layout_height="130dp"
-            android:text="@string/scan_scan"
-            android:textSize="40sp"
-            android:background="@color/transparent"
             android:layout_toRightOf="@id/iv"
-            android:textColor="@color/white"
+            android:background="@color/transparent"
             android:clickable="false"
-            />
+            android:text="@string/scan_scan"
+            android:textColor="@color/white"
+            android:textSize="40sp" />
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:src="@drawable/saomiao" />
 
     </RelativeLayout>
 
-    <Button 
-        android:id="@+id/btn_clear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/scan_clean"
-        android:layout_marginTop="8dp"
-        android:visibility="gone"
-        />
-    <Button 
-        android:id="@+id/btn_set"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/scan_func_set"
-        android:layout_marginTop="8dp"
-        android:visibility="gone"
-        />
-    <Button 
-        android:id="@+id/btn_instruction"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/scan_product"
-        android:layout_marginTop="8dp"
-        android:visibility="gone"/>
-</LinearLayout>
+
+</RelativeLayout>

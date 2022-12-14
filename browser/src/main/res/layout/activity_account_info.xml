@@ -23,14 +23,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rl_title"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/tv_ic_clientimg"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:gravity="center_horizontal"
-            />
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:gravity="center_horizontal" />
 
     </RelativeLayout>
     <!-- 会员信息 -->
@@ -131,20 +131,18 @@
             android:textSize="16sp" />
 
 
-
-
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_content"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="5dp">
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="20dp">
 
         <include layout="@layout/content_main" />
     </RelativeLayout>
-
 
 
     <RelativeLayout
@@ -178,8 +176,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/rl_account"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/Select_the_tickets"
         android:textSize="18sp" />
 
@@ -188,7 +186,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/btn_fee"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
         android:layout_marginBottom="5dp"
         android:text="总金额："
         android:textSize="18sp" />

@@ -70,8 +70,6 @@ public class PullDownMenu extends LinearLayout {
         addView(view, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
         tvPullDown = (TextView) findViewById(R.id.tvPullDown);
         hashMaps = new ArrayList<HashMap<String, String>>();
-//		// 模拟加载数据
-//		loadData();
         tvPullDown.setOnClickListener(new OnClickListener() {
 
             @Override

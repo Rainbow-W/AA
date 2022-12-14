@@ -29,7 +29,6 @@ import com.taicd.browserIP.R;
 import com.yunkai.browser.Application.MyApplication;
 import com.yunkai.browser.activity.AccountInfoActivity;
 import com.yunkai.browser.nfc.NFCActivity;
-import com.yunkai.browser.scan.BaseActivity;
 import com.yunkai.browser.scan.ScannerActivity;
 import com.yunkai.browser.utils.NetBroadcastReceiver;
 import com.yunkai.browser.utils.NetEvent;
@@ -42,7 +41,7 @@ import static com.yunkai.browser.fragment.CheckFragment.REQUEST_QRCODE;
 import static com.yunkai.browser.fragment.CheckFragment.REQUEST_QRCODE_NFC;
 
 public class TicketFragment extends Fragment implements NetEvent {
-
+    public static String MODULE_FLAG = "module_flag";
     View root;
     Button btnScan;
     Button btnIc, btnScanCard;
@@ -229,7 +228,7 @@ public class TicketFragment extends Fragment implements NetEvent {
                     //扫描会员卡   红外方法
                     Intent intent = new Intent(getActivity(),
                             ScannerActivity.class);
-                    intent.putExtra(BaseActivity.MODULE_FLAG, 4);
+                    intent.putExtra(MODULE_FLAG, 4);
                     intent.putExtra("type", "account");
                     startActivityForResult(intent, REQUEST_QRCODE);
                 } else if (((MyApplication) getActivity().getApplication()).func == 1) {

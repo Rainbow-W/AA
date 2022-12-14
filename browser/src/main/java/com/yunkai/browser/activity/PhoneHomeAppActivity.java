@@ -1,13 +1,16 @@
 package com.yunkai.browser.activity;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+
 import android.content.pm.PackageManager;
+import android.content.pm.PermissionInfo;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -15,8 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.provider.Settings;
-import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;
@@ -28,6 +30,7 @@ import com.yunkai.browser.fragment.MeFragment;
 import com.yunkai.browser.fragment.CheckFragment;
 
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +41,7 @@ import eu.long1.spacetablayout.SpaceTabLayout;
  */
 
 public class PhoneHomeAppActivity extends AppCompatActivity {
-
+    private String TAG = "PhoneHomeAppActivity";
     protected static Context mContext;
     protected static Activity mActivity;
 
@@ -47,13 +50,37 @@ public class PhoneHomeAppActivity extends AppCompatActivity {
 
     public static SharedPreferences mySharePreferences;
 
-    // String fragUrl = "";
-
     SpaceTabLayout tabLayout;
 
     SharedPreferences.Editor editor;
     boolean isLogin;
 
+    private long exitTime = 0;
+
+    private final int MY_REQUEST_CODE = 1000;
+    /**
+     * 读取日历
+     * 相机
+     * 读取手机联系人
+     */
+    private String[] permissions = new String[]{
+            Manifest.permission.READ_CALENDAR,
+            Manifest.permission.READ_CONTACTS,
+            Manifest.permission.INTERNET,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_PHONE_STATE,
+
+            Manifest.permission.NFC,
+            Manifest.permission.ACCESS_NETWORK_STATE,
+            Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS,
+            Manifest.permission.MODIFY_AUDIO_SETTINGS,
+            Manifest.permission.RECORD_AUDIO,
+            Manifest.permission.WAKE_LOCK,
+            Manifest.permission.CHANGE_NETWORK_STATE,
+            Manifest.permission.CHANGE_WIFI_STATE,
+            Manifest.permission.CAMERA
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -114,7 +141,8 @@ public class PhoneHomeAppActivity extends AppCompatActivity {
         tabLayout.setTabTwoText(getResources().getString(R.string.home_check));
         tabLayout.setTabThreeText(getResources().getString(R.string.home_set));
 
-        getIMEI(this);
+        getSerialNum(this);
+        init();
     }
 
 
@@ -129,24 +157,65 @@ public class PhoneHomeAppActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // mAdView.startImageCycle();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        // mAdView.pushImageCycle();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-
-        // mAdView.pushImageCycle();
     }
 
 
-    private long exitTime = 0;
+    public void init() {
+        PackageManager packageManager = this.getPackageManager();
+
+        PermissionInfo permissionInfo = null;
+
+        for (int i = 0; i < permissions.length; i++) {
+            try {
+                permissionInfo = packageManager.getPermissionInfo(permissions[i], 0);
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+            CharSequence permissionName = permissionInfo.loadLabel(packageManager);
+            if (ContextCompat.checkSelfPermission(this, permissions[i]) != PackageManager.PERMISSION_GRANTED) {
+                // 未获取权限
+                Log.i(TAG, "您未获得【" + permissionName + "】的权限 ===>");
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[i])) {
+                    Log.i(TAG, "您勾选了不再提示【" + permissionName + "】权限的申请");
+                } else {
+                    ActivityCompat.requestPermissions(this, permissions, MY_REQUEST_CODE);
+                }
+            } else {
+                Log.i(TAG, "您已获得了【" + permissionName + "】的权限");
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PackageManager packageManager = this.getPackageManager();
+        PermissionInfo permissionInfo = null;
+        for (int i = 0; i < permissions.length; i++) {
+            try {
+                permissionInfo = packageManager.getPermissionInfo(permissions[i], 0);
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+            CharSequence permissionName = permissionInfo.loadLabel(packageManager);
+            if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                Log.i(TAG, "您同意了【" + permissionName + "】权限");
+            } else {
+                Log.i(TAG, "您拒绝了【" + permissionName + "】权限");
+            }
+        }
+    }
+
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -163,25 +232,22 @@ public class PhoneHomeAppActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-
-    /**
-     * 获取CAMERA权限
-     */
-    @SuppressLint({"HardwareIds", "MissingPermission"})
-    public static String getIMEI(Context context) {
-        if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            //申请CAMERA权限
-            ActivityCompat.requestPermissions(mActivity, new String[]{Manifest.permission.READ_PHONE_STATE}, 2);
-        } else {
-            TelephonyManager mTelephony = (TelephonyManager) mActivity.getSystemService(Context.TELEPHONY_SERVICE);
-            assert mTelephony != null;
-            if (mTelephony.getDeviceId() != null) {
-                return mTelephony.getDeviceId();
-            } else {
-                return Settings.Secure.getString(mContext.getContentResolver(), Settings.Secure.ANDROID_ID);
+    public static String getSerialNum(Context context) {
+        String serial = "";
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {//9.0+
+                serial = Build.getSerial();
+            } else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {//8.0+
+                serial = Build.SERIAL;
+            } else {//8.0-
+                Class<?> c = Class.forName("android.os.SystemProperties");
+                Method get = c.getMethod("get", String.class);
+                serial = (String) get.invoke(c, "ro.serialno");
             }
-
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return null;
+        return serial;
     }
+
 }

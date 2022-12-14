@@ -38,7 +38,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.yunkai.browser.activity.PhoneHomeAppActivity.getIMEI;
+import static com.yunkai.browser.activity.PhoneHomeAppActivity.getSerialNum;
 import static com.yunkai.browser.activity.PhoneHomeAppActivity.mySharePreferences;
 
 /**
@@ -100,82 +100,6 @@ public class JsonHelp {
 //	fee：票价格；
 
 
-    //post 注册激活IMEI码
-    public JsonHelp(Activity context, String user, String pw, String login) {
-        this.context = context;
-        this.username = user;
-        this.password = pw;
-    }
-
-    public Thread postThread = new Thread() {
-        public void run() {
-            post(context, username, password);
-        }
-    };
-
-    public void post(Activity context, String user, String pw) {
-        String strUrl = mySharePreferences.getString("Url", "") + context.getResources().getString(R.string.url_post);
-        URL url = null;
-        try {
-            url = new URL(strUrl);
-            HttpURLConnection urlConn = (HttpURLConnection) url.openConnection(); // 创建一个HTTP连接
-            urlConn.setRequestMethod("POST"); // 指定使用POST请求方式
-            urlConn.setDoInput(true); // 向连接中写入数据
-            urlConn.setDoOutput(true); // 从连接中读取数据
-            urlConn.setUseCaches(false); // 禁止缓存
-            urlConn.setInstanceFollowRedirects(true); //自动执行HTTP重定向
-            urlConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); // 设置内容类型
-            DataOutputStream out = new DataOutputStream(urlConn.getOutputStream()); // 获取输出流
-            String param = "imei_num=" + URLEncoder.encode(getIMEI(context), "UTF-8"); //连接要提交的数 //"869949029152723",
-            out.writeBytes(param);//将要传递的数据写入数据输出流
-            out.flush();  //输出缓存
-            out.close(); //关闭数据输出流
-
-            if (urlConn.getResponseCode() == HttpURLConnection.HTTP_OK) { // 判断是否响应成功
-                InputStreamReader in = new InputStreamReader(urlConn.getInputStream(), "utf-8"); // 获得读取的内容，utf-8获取内容的编码
-                BufferedReader buffer = new BufferedReader(in); // 获取输入流对象
-                String inputLine = null;
-                while ((inputLine = buffer.readLine()) != null) {
-                    try {
-                        JSONObject reader = new JSONObject(inputLine);//使用JSONObject解析
-                        System.out.println("---" + reader.toString());
-                        String errcode = reader.getString("errcode");
-
-                        //实例化SharedPreferences.Editor对象
-                        editor = mySharePreferences.edit();
-
-                        if (errcode.equals("0")) {//激活成功
-                            editor.putBoolean("isRegister", true);
-                            editor.commit();
-                            new Thread(new JsonHelp(context, user, pw, 0).postThreadLogin).start();//post PDA登录
-                        } else if (errcode.equals("1")) {//失败
-                            String errmsg = reader.getString("errmsg");
-                            //System.out.println("000"+errmsg);
-                            if (errmsg.trim().contains("已被激活")) {
-                                editor.putBoolean("isRegister", true);
-                                editor.commit();
-                                new Thread(new JsonHelp(context, user, pw, 0).postThreadLogin).start();//post PDA登录
-                            } else {
-                                Toast.makeText(context, "设备激活失败", Toast.LENGTH_LONG).show();
-                            }
-
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-                in.close(); //关闭字符输入流
-            }
-            urlConn.disconnect();  //断开连接
-
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-
-    }
-
-
     //post PDA登录
     public JsonHelp(Activity context, String username, String password, int i) {
         this.context = context;
@@ -211,7 +135,7 @@ public class JsonHelp {
             urlConn.setInstanceFollowRedirects(true); //自动执行HTTP重定向
             urlConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); // 设置内容类型
             DataOutputStream out = new DataOutputStream(urlConn.getOutputStream()); // 获取输出流
-            String param = "imei_num=" + URLEncoder.encode(getIMEI(context), "UTF-8")
+            String param = "imei_num=" + URLEncoder.encode(getSerialNum(context), "UTF-8")
                     + "&username="
                     + URLEncoder.encode(username, "UTF-8") + "&password="
                     + URLEncoder.encode(password, "UTF-8") + "&username="
@@ -296,7 +220,7 @@ public class JsonHelp {
             urlConn.setInstanceFollowRedirects(true); //自动执行HTTP重定向
             urlConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); // 设置内容类型
             DataOutputStream out = new DataOutputStream(urlConn.getOutputStream()); // 获取输出流
-            String param = "imei_num=" + URLEncoder.encode(getIMEI(context), "UTF-8")
+            String param = "imei_num=" + URLEncoder.encode(getSerialNum(context), "UTF-8")
                     + "&cardnum="
                     + URLEncoder.encode(cardnum, "UTF-8") + "&username="
                     + URLEncoder.encode(mySharePreferences.getString("userName", ""), "UTF-8"); //连接要提交的数
@@ -322,7 +246,6 @@ public class JsonHelp {
                             //设置返回数据,返回给的是CheckFragment
                             context.setResult(CheckFragment.REQUEST_QRCODE, intent);
                             context.finish();
-
 
                             //	context.setResult(TicketFragment.REQUEST_QRCODE, intent);
 
@@ -386,10 +309,9 @@ public class JsonHelp {
             urlConn.setInstanceFollowRedirects(true); //自动执行HTTP重定向
             urlConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); // 设置内容类型
             DataOutputStream out = new DataOutputStream(urlConn.getOutputStream()); // 获取输出流
-            String param = "imei_num=" + URLEncoder.encode(getIMEI(context), "UTF-8")
-                    + "&cardnum="
-                    + URLEncoder.encode(cardnum, "UTF-8") + "&username="
-                    + URLEncoder.encode(mySharePreferences.getString("userName", ""), "UTF-8"); //连接要提交的数
+            String param = "imei_num=" + URLEncoder.encode(getSerialNum(context), "UTF-8")
+                    + "&cardnum=" + URLEncoder.encode(cardnum, "UTF-8")
+                    + "&username=" + URLEncoder.encode(mySharePreferences.getString("userName", ""), "UTF-8"); //连接要提交的数
             out.writeBytes(param);//将要传递的数据写入数据输出流
             out.flush();  //输出缓存
             out.close(); //关闭数据输出流
@@ -470,7 +392,8 @@ public class JsonHelp {
 
     public void postICPay(Activity context, String cardnum, String ticketid) {
 
-        String strUrl = mySharePreferences.getString("Url", "") + context.getResources().getString(R.string.url_post_ic_nfc);
+        String strUrl = mySharePreferences.getString("Url", "") + context.getResources().getString(R.string.url_post_ic_pay);
+        Log.e("TAG", "postICPay:strUrl =" + strUrl);
         URL url = null;
         try {
             url = new URL(strUrl);
@@ -482,11 +405,10 @@ public class JsonHelp {
             urlConn.setInstanceFollowRedirects(true); //自动执行HTTP重定向
             urlConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); // 设置内容类型
             DataOutputStream out = new DataOutputStream(urlConn.getOutputStream()); // 获取输出流
-            String param = "imei_num=" + URLEncoder.encode(getIMEI(context).trim(), "UTF-8")
-                    + "&cardnum="
-                    + URLEncoder.encode(cardnum, "UTF-8") + "&ticketid="
-                    + URLEncoder.encode(ticketid, "UTF-8") + "&userid="
-                    + URLEncoder.encode(mySharePreferences.getString("userid", ""), "UTF-8"); //连接要提交的数
+            String param = "imei_num=" + URLEncoder.encode(getSerialNum(context).trim(), "UTF-8")
+                    + "&cardnum=" + URLEncoder.encode(cardnum, "UTF-8")
+                    + "&ticketid=" + URLEncoder.encode(ticketid, "UTF-8")
+                    + "&userid=" + URLEncoder.encode(mySharePreferences.getString("userid", ""), "UTF-8"); //连接要提交的数
             out.writeBytes(param);//将要传递的数据写入数据输出流
             out.flush();  //输出缓存
             out.close(); //关闭数据输出流
@@ -498,15 +420,16 @@ public class JsonHelp {
                 while ((inputLine = buffer.readLine()) != null) {
                     try {
                         JSONObject reader = new JSONObject(inputLine);//使用JSONObject解析
-                        System.out.println("IC卡支付---" + reader.toString());
-                        String errcode = reader.getString("errcode");
+                        Log.e("TAG", "postICPay:IC卡支付 =  " + reader);
+                        int errcode = reader.getInt("errcode");
                         String output = "";
-                        if (errcode.equals("0")) {//请求成功
-                            output = "支付成功";
-                        } else if (errcode.equals("1")) {//失败
-                            output = "支付失败";
+                        if (errcode == 0) {//请求成功
+                            output = "支付成功," + reader.getString("errmsg");
+                        } else if (errcode == 1) {//失败
+                            output = "支付失败," + reader.getString("errmsg");
                         }
                         Message msg = new Message();
+                        msg.what = errcode;
                         msg.obj = output;
                         AccountInfoActivity.handlerPay.sendMessage(msg);
 
@@ -530,8 +453,9 @@ public class JsonHelp {
         ByteArrayOutputStream outStream = new ByteArrayOutputStream();
         byte[] data = new byte[1024];
         int len = 0;
-
-        URL url = new URL(mySharePreferences.getString("Url", "") + context.getResources().getString(R.string.url_ticket_list));
+        String strUrl = mySharePreferences.getString("Url", "") + context.getResources().getString(R.string.url_ticket_list);
+        Log.e("TAG", "getTicketList:url =  " + strUrl);
+        URL url = new URL(strUrl);
 
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -595,7 +519,7 @@ public class JsonHelp {
             urlConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); // 设置内容类型
             DataOutputStream out = new DataOutputStream(urlConn.getOutputStream()); // 获取输出流
             String param = "link_url=" + URLEncoder.encode(linkUrl.trim(), "UTF-8")
-                    + "&imei_num=" + URLEncoder.encode(getIMEI(context).trim(), "UTF-8")
+                    + "&imei_num=" + URLEncoder.encode(getSerialNum(context).trim(), "UTF-8")
                     + "&userid=" + URLEncoder.encode(mySharePreferences.getString("userid", ""), "UTF-8"); //连接要提交的数
             out.writeBytes(param);//将要传递的数据写入数据输出流
             out.flush();  //输出缓存
@@ -697,7 +621,7 @@ public class JsonHelp {
             urlConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); // 设置内容类型
             DataOutputStream out = new DataOutputStream(urlConn.getOutputStream()); // 获取输出流
             String param = "link_url=" + URLEncoder.encode(linkUrl.trim(), "UTF-8")
-                    + "&imei_num=" + URLEncoder.encode(getIMEI(context).trim(), "UTF-8")
+                    + "&imei_num=" + URLEncoder.encode(getSerialNum(context).trim(), "UTF-8")
                     + "&item_id=" + URLEncoder.encode(idTicket.trim(), "UTF-8")
                     + "&userid=" + URLEncoder.encode(mySharePreferences.getString("userid", ""), "UTF-8"); //连接要提交的数
             out.writeBytes(param);//将要传递的数据写入数据输出流

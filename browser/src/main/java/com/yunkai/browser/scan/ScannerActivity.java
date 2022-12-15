@@ -2,6 +2,7 @@ package com.yunkai.browser.scan;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -29,7 +30,7 @@ import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class ScannerActivity extends AppCompatActivity implements OnClickListener {
+public class ScannerActivity extends AppCompatActivity implements OnClickListener, ScanDataImp {
 
     private ScanBroadcastReceiver scanBroadcastReceiver = null;
     private Intent intentBroadcast = null;
@@ -68,10 +69,8 @@ public class ScannerActivity extends AppCompatActivity implements OnClickListene
 
     private void registerCallbackAndInitScan() {
         if (scanBroadcastReceiver == null) {
-            scanBroadcastReceiver = new ScanBroadcastReceiver();
-            IntentFilter intentFilter = new IntentFilter();
-            intentFilter.addAction("com.scancode.resault");
-            this.registerReceiver(scanBroadcastReceiver, intentFilter);
+            scanBroadcastReceiver = ScanBroadcastReceiver.getInstance(this);
+            scanBroadcastReceiver.setScanData(this);
         }
 
         if (intentBroadcast == null) {
@@ -131,8 +130,7 @@ public class ScannerActivity extends AppCompatActivity implements OnClickListene
                     showListAlertDialog(listName);
 
                 } else {//说明传值类型是 string
-
-                    System.out.println("toast--------" + toast.toString());
+                    Log.e(TAG, "handleMessage: msg.obj" + toast);
                     final String aa;
                     if (toast != null && !toast.equals("")) {
                         aa = toast.toString();
@@ -158,6 +156,7 @@ public class ScannerActivity extends AppCompatActivity implements OnClickListene
 
     private void showCircleDialog(String message) {
 
+        //以下是再次启动扫描的代码
         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                 .setTitleText(getResources().getString(R.string.scan_check_title))
                 .setContentText(message)
@@ -168,10 +167,7 @@ public class ScannerActivity extends AppCompatActivity implements OnClickListene
                     sDialog.dismiss();
                     finish();
                 })
-                .setConfirmClickListener(sDialog -> {
-                    //以下是再次启动扫描的代码
-                    sDialog.dismiss();
-                })
+                .setConfirmClickListener(Dialog::dismiss)
                 .show();
 
     }
@@ -235,19 +231,13 @@ public class ScannerActivity extends AppCompatActivity implements OnClickListene
         }
     }
 
-    /**
-     * 扫描结果广播
-     */
-    class ScanBroadcastReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            // TODO Auto-generated method stub
-            String text = intent.getExtras().getString("code").trim();
-            Log.e("ScanBroadcastReceiver", "ScanBroadcastReceiver code:" + text);
-            Log.e(TAG, "onReceive: type =" + type);
-            type = getIntent().getStringExtra("type");
-            try {
-                if (type.equals("check")) {//检测票是否有效
+    @Override
+    public void getScanData(String text) {
+        Log.e(TAG, "onReceive: type =" + type);
+        type = getIntent().getStringExtra("type");
+        try {
+            switch (type) {
+                case "check": //检测票是否有效
                     try {
                         scanUrl = text;
                         new Thread(new JsonHelp(ScannerActivity.this, scanUrl, 0).postThreadCheck).start();//post   PDA二维码检票
@@ -260,20 +250,23 @@ public class ScannerActivity extends AppCompatActivity implements OnClickListene
                         });
                     }
 
-                } else if (type.equals("account")) {//获取会员信息
+                    break;
+                case "account": //获取会员信息
                     //将获取到的id用来获取ic卡信息
                     new Thread(new JsonHelp(ScannerActivity.this, text).postThreadIC).start();//post 获取IC卡会员信息
-                } else if (type.equals("search")) {
+
+                    break;
+                case "search":
                     String searchTicket = text;
                     try {
                         new Thread(new JsonHelp(searchTicket, ScannerActivity.this).postThreadSearch).start();//post 查询票信息
                     } catch (Exception e) {
                         Log.e(TAG, "onReceive: searchTicket = " + searchTicket + "--" + e.toString());
                     }
-                }
-            } catch (Exception e) {
-                Log.e(TAG, "onReceive: type:" + type + e.toString());
+                    break;
             }
+        } catch (Exception e) {
+            Log.e(TAG, "onReceive: type:" + type + e.toString());
         }
     }
 

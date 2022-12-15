@@ -20,7 +20,11 @@ public class ScanBroadcastReceiver extends BroadcastReceiver {
     private static ScanBroadcastReceiver scanBroadcastReceiver;
     private static ScanDataImp scanData = null;
 
-    public static ScanBroadcastReceiver getInstance(ScanDataImp scanDataImp, Context context) {
+    public void setScanData(ScanDataImp scanData) {
+        this.scanData = scanData;
+    }
+
+    public static ScanBroadcastReceiver getInstance(Context context) {
         if (scanBroadcastReceiver == null) {
             synchronized (ScanBroadcastReceiver.class) {
                 if (scanBroadcastReceiver == null) {
@@ -28,7 +32,6 @@ public class ScanBroadcastReceiver extends BroadcastReceiver {
                     IntentFilter intentFilter = new IntentFilter();
                     intentFilter.addAction("com.scancode.resault");
                     context.registerReceiver(scanBroadcastReceiver, intentFilter);
-                    scanData = scanDataImp;
                 }
 
             }

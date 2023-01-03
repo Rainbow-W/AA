@@ -3,10 +3,8 @@ package com.yunkai.browser.scan;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +27,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import io.reactivex.Observable;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class ScannerActivity extends AppCompatActivity implements OnClickListener, ScanDataImp {
 
@@ -48,6 +51,10 @@ public class ScannerActivity extends AppCompatActivity implements OnClickListene
 
     String type;
     String scanUrl = "";
+
+
+    // disposable 是订阅事件，可以用来取消订阅。防止在 activity 或者 fragment 销毁后仍然占用着内存，无法释放。
+    private final CompositeDisposable mDisposable = new CompositeDisposable();
 
 
     @Override
@@ -89,7 +96,7 @@ public class ScannerActivity extends AppCompatActivity implements OnClickListene
         final List<String> listNameOnly = new ArrayList<>();
         final List<String> listNameId = new ArrayList<>();
         for (int i = 0; i < listName.size(); i++) {
-            listNameOnly.add(listName.get(i).substring(listName.get(i).indexOf("*") + 1, listName.get(i).length()));
+            listNameOnly.add(listName.get(i).substring(listName.get(i).indexOf("*") + 1));
         }
         for (int i = 0; i < listName.size(); i++) {
             listNameId.add(listName.get(i).substring(0, listName.get(i).indexOf("*")));
@@ -102,11 +109,18 @@ public class ScannerActivity extends AppCompatActivity implements OnClickListene
             try {
                 new Thread(new JsonHelp(ScannerActivity.this, scanUrl, 0, listNameId.get(index)).postThreadCheckPac).start();//post   PDA二维码检票
             } catch (Exception e) {
-                runOnUiThread(() -> {
-                    showCircleDialog(getResources().getString(R.string.scan_check_error)
-                            + getResources().getString(R.string.scan_error_error));
-                    playerFai.start();//播放声音
-                });
+                Log.e(TAG, "getScanData: " + e);
+                mDisposable.add(Observable.create((ObservableOnSubscribe<Integer>) emitter -> {
+                                    playerFai.start();//播放声音
+                                    emitter.onNext(1);
+                                }).subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe(state -> {
+                                    Log.e(TAG, "handleMessage:state = " + state);
+                                    showCircleDialog(getResources().getString(R.string.scan_check_error)
+                                            + getResources().getString(R.string.scan_error_error), 1);
+                                })
+                );
             }
 
             alertDialog1.dismiss();
@@ -124,40 +138,43 @@ public class ScannerActivity extends AppCompatActivity implements OnClickListene
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                Object toast = (Object) msg.obj;
+                Object toast = msg.obj;
                 if (toast.toString().startsWith("[")) {//说明传值类型是 list，需要弹窗 列表给用户选择项目
                     listName = (List<String>) msg.obj;
                     showListAlertDialog(listName);
 
                 } else {//说明传值类型是 string
                     Log.e(TAG, "handleMessage: msg.obj" + toast);
-                    final String aa;
-                    if (toast != null && !toast.equals("")) {
-                        aa = toast.toString();
+                    final String data;
+                    if (!toast.equals("")) {
+                        data = toast.toString();
                     } else {
-                        //aa="检票失败\n"+"获取信息失败";
-                        aa = getResources().getString(R.string.scan_error_noinfo);
+                        data = getResources().getString(R.string.scan_error_noinfo);
                     }
 
-                    runOnUiThread(() -> {
-                        //showNormalDialog(aa);
-                        showCircleDialog(aa);
-                        if (aa.contains(getResources().getString(R.string.scan_suc_suc))) {
-                            playerSuc.start();//播放声音
-                        } else {
-                            playerFai.start();//播放声音
-                        }
-
-                    });
+                    mDisposable.add(Observable.create((ObservableOnSubscribe<Boolean>) emitter -> {
+                                        boolean is = data.contains(getResources().getString(R.string.scan_suc_suc));
+                                        if (is) {
+                                            playerSuc.start();
+                                        } else {
+                                            playerFai.start();
+                                        }
+                                        emitter.onNext(is);
+                                    }).subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(state -> {
+                                        Log.e(TAG, "handleMessage:state = " + state);
+                                        showCircleDialog(data, state ? 2 : 1);
+                                    })
+                    );
                 }
             }
         };
     }
 
-    private void showCircleDialog(String message) {
-
+    private void showCircleDialog(String message, int type) {
         //以下是再次启动扫描的代码
-        new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+        new SweetAlertDialog(this, type)
                 .setTitleText(getResources().getString(R.string.scan_check_title))
                 .setContentText(message)
                 .setCancelText(getResources().getString(R.string.scan_check_quit))
@@ -229,6 +246,9 @@ public class ScannerActivity extends AppCompatActivity implements OnClickListene
             playerSuc.release();
             playerSuc = null;
         }
+
+        mDisposable.clear();
+
     }
 
     @Override
@@ -242,12 +262,19 @@ public class ScannerActivity extends AppCompatActivity implements OnClickListene
                         scanUrl = text;
                         new Thread(new JsonHelp(ScannerActivity.this, scanUrl, 0).postThreadCheck).start();//post   PDA二维码检票
                     } catch (Exception e) {
-                        runOnUiThread(() -> {
-                            scanUrl = "";
-                            showCircleDialog(getResources().getString(R.string.scan_check_error)
-                                    + getResources().getString(R.string.scan_error_error));
-                            playerFai.start();//播放声音
-                        });
+                        Log.e(TAG, "getScanData: " + e);
+                        mDisposable.add(Observable.create((ObservableOnSubscribe<Integer>) emitter -> {
+                                            scanUrl = "";
+                                            playerFai.start();//播放声音
+                                            emitter.onNext(1);
+                                        }).subscribeOn(Schedulers.io())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribe(state -> {
+                                            Log.e(TAG, "handleMessage:state = " + state);
+                                            showCircleDialog(getResources().getString(R.string.scan_check_error)
+                                                    + getResources().getString(R.string.scan_error_error), 1);
+                                        })
+                        );
                     }
 
                     break;
@@ -261,12 +288,12 @@ public class ScannerActivity extends AppCompatActivity implements OnClickListene
                     try {
                         new Thread(new JsonHelp(searchTicket, ScannerActivity.this).postThreadSearch).start();//post 查询票信息
                     } catch (Exception e) {
-                        Log.e(TAG, "onReceive: searchTicket = " + searchTicket + "--" + e.toString());
+                        Log.e(TAG, "onReceive: searchTicket = " + searchTicket + "--" + e);
                     }
                     break;
             }
         } catch (Exception e) {
-            Log.e(TAG, "onReceive: type:" + type + e.toString());
+            Log.e(TAG, "onReceive: type:" + type + e);
         }
     }
 

@@ -8,8 +8,10 @@ import android.hardware.Camera;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Handler;
+
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.Window;
@@ -47,7 +49,7 @@ public class WebViewActivity extends Activity implements SurfaceHolder.Callback 
     WebView webview;
     private Context context;
 
-    private  String index_url = "http://www.taobao.com/"; //应用主页地址
+    private String index_url = "http://www.taobao.com/"; //应用主页地址
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +65,7 @@ public class WebViewActivity extends Activity implements SurfaceHolder.Callback 
         getPermission();
 
 
-
-
-        webview =  findViewById(R.id.web);
+        webview = findViewById(R.id.web);
 
         //设置WebView属性，能够执行Javascript脚本
         webview.getSettings().setJavaScriptEnabled(true);
@@ -76,7 +76,7 @@ public class WebViewActivity extends Activity implements SurfaceHolder.Callback 
         webview.setWebViewClient(new WebViewClient() {
             public boolean shouldOverrideUrlLoading(WebView view, String url) { //  重写此方法表明点击网页里面的链接还是在当前的webview里跳转，不跳到浏览器那边, 返回false会跳转到浏览器访问。
                 //view.loadUrl(url);
-               // return true;
+                // return true;
                 return super.shouldOverrideUrlLoading(view, url);
             }
         });
@@ -94,14 +94,13 @@ public class WebViewActivity extends Activity implements SurfaceHolder.Callback 
     }
 
 
-
     //js调用此方法
     public class JsInteration {
         //加上此注释才能被h5调用到
         @JavascriptInterface
-        public String j2JgetSoundPath(int motionEvent){
-            String data="";
-            if(motionEvent ==0){
+        public String j2JgetSoundPath(int motionEvent) {
+            String data = "";
+            if (motionEvent == 0) {
                 try {
                     Recorder = new MediaRecorder();
                     Recorder.setAudioSource(MediaRecorder.AudioSource.MIC);// 设置音源为micphone
@@ -109,7 +108,7 @@ public class WebViewActivity extends Activity implements SurfaceHolder.Callback 
                     Recorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);// 设置封装格式(THREE_GPP)
                     Recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);// 设置编码格式
                     // 定义存储文件名称
-                    sPath =context.getExternalCacheDir().getPath()+ File.separator+"voice_cache.amr";
+                    sPath = context.getExternalCacheDir().getPath() + File.separator + "voice_cache.amr";
 
                     Recorder.setOutputFile(sPath);
                     Recorder.prepare();
@@ -122,12 +121,12 @@ public class WebViewActivity extends Activity implements SurfaceHolder.Callback 
                 }
 
 
-            }else if(motionEvent== 1){
+            } else if (motionEvent == 1) {
                 try {
                     Recorder.stop();
                     Recorder.release();
                     Recorder = null;
-                    data=new GetInfor().encodeBase64File(sPath);
+                    data = new GetInfor().encodeBase64File(sPath);
                 } catch (Exception e) {
                     e.printStackTrace();
                     System.out.println(e.toString());
@@ -139,15 +138,16 @@ public class WebViewActivity extends Activity implements SurfaceHolder.Callback 
         }
 
         @JavascriptInterface
-        public void getToast(){//测试是否真的可以调用到
+        public void getToast() {//测试是否真的可以调用到
             Toast.makeText(getBaseContext(), "调用到了！", Toast.LENGTH_LONG).show();
         }
+
         @JavascriptInterface
         public String j2JstartVideo() {//获取1秒的录像,保存并返回Base64
             Toast.makeText(getBaseContext(), "打开录像", Toast.LENGTH_LONG).show();
-           // if (mSurfaceview.getVisibility() == View.GONE) {//当预览隐藏的时候显示
-              //  mSurfaceview.setVisibility(View.VISIBLE);
-          //  }
+            // if (mSurfaceview.getVisibility() == View.GONE) {//当预览隐藏的时候显示
+            //  mSurfaceview.setVisibility(View.VISIBLE);
+            //  }
 
             if (mRecorder == null) {
                 mRecorder = new MediaRecorder();
@@ -237,7 +237,7 @@ public class WebViewActivity extends Activity implements SurfaceHolder.Callback 
         @JavascriptInterface
         public void j2JcloseVideo() {//关闭录像
             //if(mSurfaceview.getVisibility()==View.VISIBLE){//当预览显示的时候隐藏
-               // mSurfaceview.setVisibility(View.GONE);
+            // mSurfaceview.setVisibility(View.GONE);
             //}
             //该关闭的都关闭
             if (camera != null) {
@@ -246,7 +246,7 @@ public class WebViewActivity extends Activity implements SurfaceHolder.Callback 
             }
 
             //删除文件夹
-            info.deleteDir(info.getSDPath()+"/recordtest");
+            info.deleteDir(info.getSDPath() + "/recordtest");
 
         }
 
@@ -280,7 +280,7 @@ public class WebViewActivity extends Activity implements SurfaceHolder.Callback 
     }
 
 
-    public void getPermission(){
+    public void getPermission() {
         //isGetPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         //   &&isGetPermission(Manifest.permission.RECORD_AUDIO)
         //    &&isGetPermission(Manifest.permission.CAMERA)){
@@ -288,8 +288,9 @@ public class WebViewActivity extends Activity implements SurfaceHolder.Callback 
         getNeedPermission(Manifest.permission.RECORD_AUDIO);
         getNeedPermission(Manifest.permission.CAMERA);
     }
-    public boolean isGetPermission(String permission){
-        if (PackageManager.PERMISSION_GRANTED == ContextCompat.checkSelfPermission(WebViewActivity.this,permission)) {
+
+    public boolean isGetPermission(String permission) {
+        if (PackageManager.PERMISSION_GRANTED == ContextCompat.checkSelfPermission(WebViewActivity.this, permission)) {
             //has permission, do operation directly
             return true;
         } else {//do not have permission
@@ -297,10 +298,10 @@ public class WebViewActivity extends Activity implements SurfaceHolder.Callback 
         }
     }
 
-    public void getNeedPermission(String permission){
-        if(isGetPermission(permission)){
+    public void getNeedPermission(String permission) {
+        if (isGetPermission(permission)) {
             //获取了所需权限
-        }else{//do not have permission
+        } else {//do not have permission
             //Log.i(DEBUG_TAG, "user do not have this permission!");
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(WebViewActivity.this,
@@ -317,7 +318,7 @@ public class WebViewActivity extends Activity implements SurfaceHolder.Callback 
 
                 ActivityCompat.requestPermissions(WebViewActivity.this,
                         new String[]{permission},
-                        REQUEST_CODE_ASK_PERMISSIONS );
+                        REQUEST_CODE_ASK_PERMISSIONS);
 
                 // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
                 // app-defined int constant. The callback method gets the
@@ -348,12 +349,8 @@ public class WebViewActivity extends Activity implements SurfaceHolder.Callback 
                 }
                 return;
             }
-
-            // other 'case' lines to check for other
-            // permissions this app might request
         }
     }
-
 
 
 }

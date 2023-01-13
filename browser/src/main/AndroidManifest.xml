@@ -16,7 +16,6 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:icon,android:theme,android:name,android:label">
 
-        <activity android:name="com.yunkai.browser.activity.WebViewActivity" />
 
         <activity
             android:name="com.yunkai.browser.activity.PhoneHomeAppActivity"

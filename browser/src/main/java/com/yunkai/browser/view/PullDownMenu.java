@@ -82,21 +82,17 @@ public class PullDownMenu extends LinearLayout {
                     simpleAdapter = new SimpleAdapter(getContext(), hashMaps, R.layout.pop_menuitem,
                             new String[]{"item"}, new int[]{R.id.menuitem});
                     listView.setAdapter(simpleAdapter);
-                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            String stringItem = hashMaps.get(position).get("item");
-                            tvPullDown.setText(stringItem);
-                            if (popupWindow != null && popupWindow.isShowing()) {
-                                popupWindow.dismiss();
-                            }
-                            // 选择菜单后进行的操作
-                            search();
-                            Message msg = new Message();
-                            msg.obj = position+"*"+stringItem.substring(stringItem.indexOf("  "),stringItem.length()-1);
-                            AccountInfoActivity.handlerTicket.sendMessage(msg);
+                    listView.setOnItemClickListener((parent, view1, position, id) -> {
+                        String stringItem = hashMaps.get(position).get("item");
+                        tvPullDown.setText(stringItem);
+                        if (popupWindow != null && popupWindow.isShowing()) {
+                            popupWindow.dismiss();
                         }
+                        // 选择菜单后进行的操作
+                        search();
+                        Message msg = new Message();
+                        msg.obj = position;
+                        AccountInfoActivity.handlerTicket.sendMessage(msg);
                     });
                     popupWindow = new PopupWindow(viewList, tvPullDown.getWidth(), LayoutParams.WRAP_CONTENT);
                     ColorDrawable cd = new ColorDrawable(-0000);
@@ -127,8 +123,7 @@ public class PullDownMenu extends LinearLayout {
     }
 
 
-
-    private void search(){
+    private void search() {
 
     }
 
@@ -137,7 +132,7 @@ public class PullDownMenu extends LinearLayout {
         this.mStringList = strings;
         this.needSearch = needSearch;
         tvPullDown.setText(topTitle);
-        if (hashMaps !=null){
+        if (hashMaps != null) {
             hashMaps.clear();
         }
         for (String string : mStringList) {

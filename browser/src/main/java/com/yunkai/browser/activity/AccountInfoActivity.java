@@ -3,15 +3,11 @@ package com.yunkai.browser.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Message;
 
-import android.text.Html;
-import android.text.Spanned;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -21,14 +17,19 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.google.gson.Gson;
 import com.taicd.browserIP.R;
-import com.yunkai.browser.utils.JsonHelp;
+import com.yunkai.browser.okhttp.HttpServer;
+import com.yunkai.browser.okhttp.IcCardPayErr;
+import com.yunkai.browser.okhttp.MemberListDean;
+
+
+import com.yunkai.browser.okhttp.TicketsList;
+import com.yunkai.browser.okhttp.UserBean;
+import com.yunkai.browser.utils.ConfigUtil;
 import com.yunkai.browser.view.PullDownMenu;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,15 +43,17 @@ import android.os.Handler;
 
 public class AccountInfoActivity extends Activity {
 
-    ImageView ivBack;
+    private ImageView ivBack;
     private PullDownMenu pullDownMenu;
-    String info, infoTag;
+    private MemberListDean.MemberDean data;
+    private UserBean userBean;
     private TextView tvNum, tvYuE, tvJiFen, tvTFee, tvicclientname, tvicclientphone, tviccardtype, tviccardstate, tvicendtime;
-    Button btnFEE;
-    String chooseId, cardnum;
-    List<String> listName = new ArrayList<>();
-    ImageView tvicclientimg;
-    MediaPlayer playerSuc, playerFai;
+    private Button btnFEE;
+    private String chooseId, cardnum;
+    private List<TicketsList.Tickets> tickets;
+    private List<String> listName = new ArrayList<>();
+    private ImageView tvicclientimg;
+    private MediaPlayer playerSuc, playerFai;
     private String TAG = "AccountInfoActivity";
 
     @Override
@@ -101,91 +104,68 @@ public class AccountInfoActivity extends Activity {
 
 
     private void initData() {
-        info = getIntent().getStringExtra("accountinfo");//cardnum
-        infoTag = getIntent().getStringExtra("accountinfotag");
 
+        String name = getIntent().getStringExtra("member");
+        data = new Gson().fromJson(name, MemberListDean.MemberDean.class);
+        Log.e(TAG, "initData: data = " + data);
+        String user = ConfigUtil.getUserInfo(this);
+        userBean = new Gson().fromJson(user, UserBean.class);
 
         playerSuc = MediaPlayer.create(getApplicationContext(), R.raw.chenggong);//声音初始化
         playerFai = MediaPlayer.create(getApplicationContext(), R.raw.shibai);//声音初始化
-        //获取门票列表
-        new Thread(() -> {
-            try {
-                JsonHelp.getTicketList();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }).start();
 
+        HttpServer.getInstance(this).getTicketsList(handler, userBean.getClerkid());
 
-        if (!info.equals("")) {
-            try {
-                JSONObject reader = new JSONObject(info);//使用JSONObject解析
-                Log.e(TAG, "initData: reader =" + reader);
-                cardnum = reader.getString("cardnum");
-                Log.e(TAG, "initData: cardnum = " + cardnum + "--------" + cardnum.length());
-                //cardnum 不够10位的话，要补全为10位数，只有NFC的才需要补全
-                if (infoTag != null && infoTag.equals("NFC")) {
-                    for (int i = 0; i < 9; i++) {
-                        if (cardnum.length() < 10) {
-                            cardnum = "0" + cardnum;
+        cardnum = data.getCardnum();
+        for (int i = 0; i < 9; i++) {
+            if (cardnum.length() < 10) {
+                cardnum = "0" + cardnum;
 
-                        } else {
-                            break;
-                        }
-                    }
-                }
-                String credit1 = reader.getString("credit1");//积分
-                String credit2 = reader.getString("credit2");//余额
-                String realname = reader.getString("realname");//姓名
-                String mobile = reader.getString("mobile");//电话
-                String type = reader.getString("type");//卡类型
-                String photo = reader.getString("photo");//头像
-                String state = reader.getString("status");//卡状态
-                String endtime = reader.getString("endtime");//有效期
-
-                tvNum.setText(getResources().getString(R.string.account_1, reader.getString("cardnum")));
-                tvJiFen.setText(getResources().getString(R.string.account_2, credit1));
-                tvYuE.setText(getResources().getString(R.string.account_3, credit2));
-                tvicclientname.setText(getResources().getString(R.string.account_4, realname));
-                tvicclientphone.setText(getResources().getString(R.string.account_5, mobile));
-                tviccardtype.setText(type);
-                Log.e(TAG, "initData: photo = " + photo);
-                if (photo != null) {
-                    Glide.with(this)
-                            .load(photo)
-                            .placeholder(R.drawable.loading)
-                            .into(new SimpleTarget<GlideDrawable>() {
-                                @Override
-                                public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                                    tvicclientimg.setImageDrawable(resource);
-                                }
-                            });
-                }
-
-
-                switch (state) {
-                    case "0":
-                        tviccardstate.setText("禁用");
-                        break;
-                    case "1":
-                        tviccardstate.setText("可用");
-                        break;
-                }
-
-                tvicendtime.setText(endtime);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
+            } else {
+                break;
             }
         }
+
+        tvNum.setText(getResources().getString(R.string.account_1, cardnum));
+        tvJiFen.setText(getResources().getString(R.string.account_2, data.getCredit1()));
+        tvYuE.setText(getResources().getString(R.string.account_3, data.getCredit2()));
+        tvicclientname.setText(getResources().getString(R.string.account_4, data.getRealname()));
+        tvicclientphone.setText(getResources().getString(R.string.account_5, data.getMobile()));
+        tviccardtype.setText(data.getCardtype());
+        Log.e(TAG, "initData: photo = " + data.getPhoto());
+        if (data.getPhoto() != null) {
+            Glide.with(this)
+                    .load(data.getPhoto())
+                    .placeholder(R.drawable.loading)
+                    .into(new SimpleTarget<GlideDrawable>() {
+                        @Override
+                        public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                            tvicclientimg.setImageDrawable(resource);
+                        }
+                    });
+        }
+
+
+        switch (data.getStatus()) {
+            case "0":
+                tviccardstate.setText("禁用");
+                break;
+            case "1":
+                tviccardstate.setText("可用");
+                break;
+        }
+
+        tvicendtime.setText("");
+
+
     }
 
 
     private void initListenter() {
         ivBack.setOnClickListener(view -> finish());
         btnFEE.setOnClickListener(view -> {
-            new Thread(new JsonHelp(AccountInfoActivity.this, cardnum, chooseId).postThreadICPay).start();//post IC卡支付
             btnFEE.setEnabled(false);
+            HttpServer.getInstance(this).Settlement(cardnum, chooseId, userBean.getUserid(), ConfigUtil.getAppIMEI(this), handlerPay);
         });
     }
 
@@ -197,15 +177,23 @@ public class AccountInfoActivity extends Activity {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                listName = (List<String>) msg.obj;
-                Log.e(TAG, "handleMessage: listName" + listName);
-                Log.e(TAG, "handleMessage: listName.size" + listName.size());
-                if (listName != null && listName.size() > 0) {
-                    initPullDownMenu(listName);
-                    //设置默认总金额
-                    chooseId = listName.get(0).substring(0, listName.get(0).indexOf("*"));//获取对应的id
-                    String fee01 = listName.get(0);
-                    tvTFee.setText("总金额：" + fee01.substring(fee01.indexOf("  "), fee01.length() - 1) + "元");
+                switch (msg.what) {
+                    case 0:
+                        Toast.makeText(AccountInfoActivity.this, (String) msg.obj, Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        tickets = (List<TicketsList.Tickets>) msg.obj;
+                        Log.e(TAG, "handleMessage: listName" + tickets.toString());
+                        Log.e(TAG, "handleMessage: listName.size" + tickets.size());
+                        listName.clear();
+                        for (TicketsList.Tickets tickets : tickets) {
+                            listName.add(tickets.getName());
+                        }
+                        initPullDownMenu(listName);
+                        chooseId = tickets.get(0).getId();//获取对应的id
+                        String fee01 = tickets.get(0).getFee();
+                        tvTFee.setText("总金额：" + fee01 + "元");
+                        break;
                 }
             }
         };
@@ -213,35 +201,36 @@ public class AccountInfoActivity extends Activity {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                String data = (String) msg.obj;
-                String data2 = (String) msg.obj;//为了获取position 然后获取对应id
-                int i = Integer.parseInt(data2.substring(0, data2.indexOf("*")));
-                chooseId = listName.get(i).substring(0, listName.get(i).indexOf("*"));
-                String fee = data.substring(data.indexOf("*") + 1);
+                int data = (Integer) msg.obj;
+                Log.e(TAG, "handleMessage: " + tickets.get(data).toString());
+                chooseId = tickets.get(data).getId();
+                String fee = tickets.get(data).getFee();
 
-                tvTFee.setText("总金额:" + fee + "$");
+                tvTFee.setText("总金额:" + fee + "元");
             }
         };
         handlerPay = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                int errcode = msg.what;
-                String data = (String) msg.obj;
+                IcCardPayErr icCardPayErr = new Gson().fromJson((String) msg.obj, IcCardPayErr.class);
+                Log.e(TAG, "onResponse: IcCardPayErr = " + icCardPayErr.toString());
+
                 btnFEE.setEnabled(true);
-                if (errcode == 0) {
+                if (icCardPayErr.getErrcode() == 0) {
                     playerSuc.start();//播放声音
-                    Toast.makeText(AccountInfoActivity.this, data, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountInfoActivity.this, icCardPayErr.getErrmsg(), Toast.LENGTH_SHORT).show();
                     finish();
                 } else {//支付失败
                     playerFai.start();//播放声音
-                    Toast.makeText(AccountInfoActivity.this, data, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountInfoActivity.this, icCardPayErr.getErrmsg(), Toast.LENGTH_SHORT).show();
                 }
 
             }
         };
 
     }
+
 
     @Override
     protected void onStart() {

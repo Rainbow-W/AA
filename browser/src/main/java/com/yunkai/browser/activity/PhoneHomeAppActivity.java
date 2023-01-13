@@ -3,7 +3,6 @@ package com.yunkai.browser.activity;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 
 import android.content.pm.PackageManager;
 import android.content.pm.PermissionInfo;
@@ -28,6 +27,7 @@ import com.taicd.browserIP.R;
 import com.yunkai.browser.fragment.TicketFragment;
 import com.yunkai.browser.fragment.MeFragment;
 import com.yunkai.browser.fragment.CheckFragment;
+import com.yunkai.browser.utils.ConfigUtil;
 
 
 import java.lang.reflect.Method;
@@ -48,12 +48,7 @@ public class PhoneHomeAppActivity extends AppCompatActivity {
     public ViewPager viewPager;
     public static FragmentPagerAdapter pagerAdapter;
 
-    public static SharedPreferences mySharePreferences;
-
     SpaceTabLayout tabLayout;
-
-    SharedPreferences.Editor editor;
-    boolean isLogin;
 
     private long exitTime = 0;
 
@@ -75,11 +70,8 @@ public class PhoneHomeAppActivity extends AppCompatActivity {
             Manifest.permission.ACCESS_NETWORK_STATE,
             Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS,
             Manifest.permission.MODIFY_AUDIO_SETTINGS,
-            Manifest.permission.RECORD_AUDIO,
-            Manifest.permission.WAKE_LOCK,
             Manifest.permission.CHANGE_NETWORK_STATE,
             Manifest.permission.CHANGE_WIFI_STATE,
-            Manifest.permission.CAMERA
     };
 
     @Override
@@ -92,12 +84,6 @@ public class PhoneHomeAppActivity extends AppCompatActivity {
         setContentView(R.layout.activity_homeapp_phone);
         mContext = this;
         mActivity = this;
-        //实例化SharedPreferences对象,参数1是存储文件的名称，参数2是文件的打开方式，当文件不存在时，直接创建，如果存在，则直接使用
-        mySharePreferences = getSharedPreferences("aideGroupTicket", Activity.MODE_PRIVATE);
-        //实例化SharedPreferences.Editor对象
-        editor = mySharePreferences.edit();
-        isLogin = mySharePreferences.getBoolean("isLogin", false);
-
         viewPager = (ViewPager) findViewById(R.id.vp);
 
         //add the fragments you want to display in a List
@@ -131,8 +117,6 @@ public class PhoneHomeAppActivity extends AppCompatActivity {
         };
         //为ViewPager组件设置FragmentPagerAdapter
         viewPager.setAdapter(pagerAdapter);
-
-
         tabLayout = findViewById(R.id.spaceTabLayout);
 
         //we need the savedInstanceState to get the position
@@ -141,7 +125,7 @@ public class PhoneHomeAppActivity extends AppCompatActivity {
         tabLayout.setTabTwoText(getResources().getString(R.string.home_check));
         tabLayout.setTabThreeText(getResources().getString(R.string.home_set));
 
-        getSerialNum(this);
+        getSerialNum();
         init();
     }
 
@@ -172,20 +156,19 @@ public class PhoneHomeAppActivity extends AppCompatActivity {
 
     public void init() {
         PackageManager packageManager = this.getPackageManager();
-
         PermissionInfo permissionInfo = null;
 
-        for (int i = 0; i < permissions.length; i++) {
+        for (String permission : permissions) {
             try {
-                permissionInfo = packageManager.getPermissionInfo(permissions[i], 0);
+                permissionInfo = packageManager.getPermissionInfo(permission, 0);
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }
             CharSequence permissionName = permissionInfo.loadLabel(packageManager);
-            if (ContextCompat.checkSelfPermission(this, permissions[i]) != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
                 // 未获取权限
                 Log.i(TAG, "您未获得【" + permissionName + "】的权限 ===>");
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[i])) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
                     Log.i(TAG, "您勾选了不再提示【" + permissionName + "】权限的申请");
                 } else {
                     ActivityCompat.requestPermissions(this, permissions, MY_REQUEST_CODE);
@@ -229,10 +212,16 @@ public class PhoneHomeAppActivity extends AppCompatActivity {
             }
             return true;
         }
+        if (keyCode == KeyEvent.KEYCODE_F6 && event.getAction() == KeyEvent.ACTION_DOWN) {
+            Toast.makeText(getApplicationContext(), "点击屏幕进入扫码检票！", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
         return super.onKeyDown(keyCode, event);
     }
 
-    public static String getSerialNum(Context context) {
+
+    public void getSerialNum() {
         String serial = "";
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {//9.0+
@@ -247,7 +236,7 @@ public class PhoneHomeAppActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return serial;
+        ConfigUtil.setAppIMEI(this, serial);
     }
 
 }

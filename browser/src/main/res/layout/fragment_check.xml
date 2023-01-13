@@ -61,10 +61,10 @@
         android:id="@+id/rl_scan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true">
+
         <!-- 登录后，二维码扫描认证 -->
         <RelativeLayout
             android:id="@+id/rl_scan_check"
@@ -76,24 +76,16 @@
             android:layout_marginBottom="90dp"
             android:background="@drawable/shape_scan">
 
-            <Button
-                android:id="@+id/btn_qrcode"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:layout_toRightOf="@id/rl_iv_scan_check"
                 android:background="@color/transparent"
+                android:drawableLeft="@drawable/saomiao"
+                android:gravity="center"
                 android:padding="15dp"
                 android:text="@string/check_scan"
                 android:textColor="@color/white"
-                android:textSize="18dp" />
-
-            <ImageView
-                android:id="@+id/rl_iv_scan_check"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="15dp"
-                android:src="@drawable/saomiao" />
+                android:textSize="24sp" />
 
         </RelativeLayout>
 

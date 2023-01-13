@@ -193,7 +193,13 @@ public class ScannerActivity extends AppCompatActivity implements ScanDataImp {
                             case 1:
                                 Log.e(TAG, "handleMessage:ScanErrBean = " + scanErrBean.toString());
                                 if (scanErrBean.getErrcode() == 0) {
-                                    emitter.onNext(1);
+                                    if (scanErrBean.getData() != null) {
+                                        emitter.onNext(1);
+                                    } else if (scanErrBean.getInfo() != null) {
+                                        if (playerSuc != null)
+                                            playerSuc.start();//播放声音
+                                        emitter.onNext(3);
+                                    }
                                 } else if (scanErrBean.getErrcode() == 1) {
                                     Log.e(TAG, "handleMessage:ScanErrBean = " + scanErrBean.toString());
                                     if (playerFai != null) {

@@ -169,6 +169,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mProgressHelper.setProgressWheel((ProgressWheel) findViewById(R.id.progressWheel));
         mConfirmButton.setOnClickListener(this);
         mCancelButton.setOnClickListener(this);
+        mCancelButton.setFocusable(false);
 
         setTitleText(mTitleText);
         setContentText(mContentText);
@@ -336,12 +337,12 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         return this;
     }
 
-    public SweetAlertDialog setCancelClickListener (OnSweetClickListener listener) {
+    public SweetAlertDialog setCancelClickListener(OnSweetClickListener listener) {
         mCancelClickListener = listener;
         return this;
     }
 
-    public SweetAlertDialog setConfirmClickListener (OnSweetClickListener listener) {
+    public SweetAlertDialog setConfirmClickListener(OnSweetClickListener listener) {
         mConfirmClickListener = listener;
         return this;
     }

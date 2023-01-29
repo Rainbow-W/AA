@@ -19,6 +19,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.google.gson.Gson;
 import com.taicd.browserIP.R;
+import com.yunkai.browser.nfc.NFCActivity;
 import com.yunkai.browser.okhttp.HttpServer;
 import com.yunkai.browser.okhttp.IcCardPayErr;
 import com.yunkai.browser.okhttp.MemberListDean;
@@ -178,10 +179,11 @@ public class AccountInfoActivity extends Activity {
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 switch (msg.what) {
-                    case 0:
+                    case 1:
+                    case 3:
                         Toast.makeText(AccountInfoActivity.this, (String) msg.obj, Toast.LENGTH_SHORT).show();
                         break;
-                    case 1:
+                    case 2:
                         tickets = (List<TicketsList.Tickets>) msg.obj;
                         Log.e(TAG, "handleMessage: listName" + tickets.toString());
                         Log.e(TAG, "handleMessage: listName.size" + tickets.size());
@@ -213,18 +215,26 @@ public class AccountInfoActivity extends Activity {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                IcCardPayErr icCardPayErr = new Gson().fromJson((String) msg.obj, IcCardPayErr.class);
-                Log.e(TAG, "onResponse: IcCardPayErr = " + icCardPayErr.toString());
-
                 btnFEE.setEnabled(true);
-                if (icCardPayErr.getErrcode() == 0) {
-                    playerSuc.start();//播放声音
-                    Toast.makeText(AccountInfoActivity.this, icCardPayErr.getErrmsg(), Toast.LENGTH_SHORT).show();
-                    finish();
-                } else {//支付失败
-                    playerFai.start();//播放声音
-                    Toast.makeText(AccountInfoActivity.this, icCardPayErr.getErrmsg(), Toast.LENGTH_SHORT).show();
+                switch (msg.what) {
+                    case 1:
+                        IcCardPayErr icCardPayErr = new Gson().fromJson((String) msg.obj, IcCardPayErr.class);
+                        Log.e(TAG, "onResponse: IcCardPayErr = " + icCardPayErr.toString());
+                        if (icCardPayErr.getErrcode() == 0) {
+                            playerSuc.start();//播放声音
+                            Toast.makeText(AccountInfoActivity.this, icCardPayErr.getErrmsg(), Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {//支付失败
+                            playerFai.start();//播放声音
+                            Toast.makeText(AccountInfoActivity.this, icCardPayErr.getErrmsg(), Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                    case 3:
+                        Toast.makeText(AccountInfoActivity.this, (String) msg.obj, Toast.LENGTH_LONG).show();
+                        break;
+
                 }
+
 
             }
         };

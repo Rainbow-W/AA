@@ -242,26 +242,30 @@ public class NFCActivity extends Activity {
         public void handleMessage(Message msg) {
             Log.e(TAG, "handleMessage: " + msg.what);
             Log.e(TAG, "handleMessage: " + msg.obj.toString());
-            if (msg.what == 1) {
-                MemberListDean.MemberDean data = (MemberListDean.MemberDean) msg.obj;
-                //数据是使用Intent返回
-                Intent intent = new Intent();
-                //把返回数据存入Intent
-                intent.putExtra("tpye", 2);
-                intent.putExtra("result", new Gson().toJson(data));
-                //设置返回数据,返回给的是CaptureActivity
-                setResult(TicketFragment.REQUEST_QRCODE_NFC, intent);
-                finish();
-            } else if (msg.what == 2) {
-                //数据是使用Intent返回
-                Intent intent = new Intent();
-                //把返回数据存入Intent
-                intent.putExtra("tpye", 1);
-                intent.putExtra("result", (String) msg.obj);
-                //设置返回数据,返回给的是CaptureActivity
-                //context.setResult(CheckFragment.REQUEST_QRCODE, intent);
-                setResult(TicketFragment.REQUEST_QRCODE_NFC, intent);
-                finish();
+            //数据是使用Intent返回
+            Intent intent = new Intent();
+            switch (msg.what) {
+                case 1:
+                    MemberListDean.MemberDean data = (MemberListDean.MemberDean) msg.obj;
+                    //把返回数据存入Intent
+                    intent.putExtra("tpye", 2);
+                    intent.putExtra("result", new Gson().toJson(data));
+                    //设置返回数据,返回给的是CaptureActivity
+                    setResult(TicketFragment.REQUEST_QRCODE_NFC, intent);
+                    finish();
+                    break;
+                case 2:
+                    //把返回数据存入Intent
+                    intent.putExtra("tpye", 1);
+                    intent.putExtra("result", (String) msg.obj);
+                    //设置返回数据,返回给的是CaptureActivity
+                    //context.setResult(CheckFragment.REQUEST_QRCODE, intent);
+                    setResult(TicketFragment.REQUEST_QRCODE_NFC, intent);
+                    finish();
+                    break;
+                case 3:
+                    Toast.makeText(NFCActivity.this, (String) msg.obj, Toast.LENGTH_LONG).show();
+                    break;
             }
 
             super.handleMessage(msg);

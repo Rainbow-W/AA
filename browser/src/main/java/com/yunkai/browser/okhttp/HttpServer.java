@@ -44,8 +44,8 @@ public class HttpServer {
                 if (httpServer == null) {
                     httpServer = new HttpServer();
                     okHttpClient = new OkHttpClient.Builder()
-                            .connectTimeout(60, TimeUnit.SECONDS)//设置连接超时时间
-                            .readTimeout(60, TimeUnit.SECONDS)//设置读取超时时间
+                            .connectTimeout(30, TimeUnit.SECONDS)//设置连接超时时间
+                            .readTimeout(15, TimeUnit.SECONDS)//设置读取超时时间
                             .build();
                     HOST1 = "http://" + ConfigUtil.getUrl(context) + "ad.aidegroup.cn/";
                     HOST2 = "http://" + ConfigUtil.getUrl(context) + "qt.aidegroup.cn/";
@@ -83,6 +83,10 @@ public class HttpServer {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e(TAG, "onFailure: " + e);
+                Message msg = new Message();
+                msg.what = 3;
+                msg.obj = "网络异常!";
+                handler.sendMessage(msg);
             }
 
             @Override
@@ -130,7 +134,11 @@ public class HttpServer {
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
+                Log.e(TAG, "onFailure: " + e);
+                Message msg = new Message();
+                msg.what = 3;
+                msg.obj = "网络异常!";
+                handler.sendMessage(msg);
             }
 
             @Override
@@ -173,7 +181,11 @@ public class HttpServer {
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
+                Log.e(TAG, "onFailure: " + e);
+                Message msg = new Message();
+                msg.what = 3;
+                msg.obj = "网络异常!";
+                handler.sendMessage(msg);
             }
 
             @Override
@@ -211,7 +223,11 @@ public class HttpServer {
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
+                Log.e(TAG, "onFailure: " + e);
+                Message msg = new Message();
+                msg.what = 3;
+                msg.obj = "网络异常!";
+                handler.sendMessage(msg);
             }
 
             @Override
@@ -244,7 +260,11 @@ public class HttpServer {
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
+                Log.e(TAG, "onFailure: " + e);
+                Message msg = new Message();
+                msg.what = 3;
+                msg.obj = "网络异常!";
+                handler.sendMessage(msg);
             }
 
             @Override
@@ -255,10 +275,10 @@ public class HttpServer {
                 Log.e(TAG, "onResponse: " + ticketsList);
                 Message msg;
                 if (ticketsList.getErrcode() != 0) {
-                    msg = handler.obtainMessage(2);
+                    msg = handler.obtainMessage(1);
                     msg.obj = ticketsList.getErrmsg();
                 } else {
-                    msg = handler.obtainMessage(1);
+                    msg = handler.obtainMessage(2);
                     msg.obj = ticketsList.getData();
                 }
                 handler.sendMessage(msg);
@@ -271,7 +291,6 @@ public class HttpServer {
     /**
      * 结算
      *
-     * @param json
      */
     public void Settlement(String cardnum, String ticketid, String userid, String imei_num, Handler handler) {
         String strUrl = HOST2 + "/Api/PdaDevice/payByIcCard";
@@ -293,6 +312,11 @@ public class HttpServer {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.d("TAG", "onFailure: " + e);
+                Log.e(TAG, "onFailure: " + e);
+                Message msg = new Message();
+                msg.what = 3;
+                msg.obj = "网络异常!";
+                handler.sendMessage(msg);
             }
 
             @Override
@@ -300,6 +324,7 @@ public class HttpServer {
                 final String str = response.body().string();
                 Log.e(TAG, "onResponse: " + str);
                 Message message = new Message();
+                message.what = 1;
                 message.obj = str;
                 handler.sendMessage(message);
             }

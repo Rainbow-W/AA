@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/9527/TicketCheck/browser/src/main/res/drawable/dialog_style_xml_color.xml" value="0.156" />
+        <entry key="..\:/9527/TicketCheck/browser/src/main/res/drawable/dialog_style_xml_icon.xml" value="0.156" />
+        <entry key="..\:/9527/TicketCheck/browser/src/main/res/drawable/edit_shape_line.xml" value="0.156" />
+        <entry key="..\:/9527/TicketCheck/browser/src/main/res/drawable/frame.xml" value="0.156" />
+        <entry key="..\:/9527/TicketCheck/browser/src/main/res/drawable/zflash_drawable_btn.xml" value="0.156" />
+        <entry key="..\:/9527/TicketCheck/browser/src/main/res/drawable/zmm_title_back_btn.xml" value="0.156" />
+        <entry key="..\:/9527/TicketCheck/browser/src/main/res/drawable/zphoto_drawable_btn.xml" value="0.156" />
+        <entry key="..\:/9527/TicketCheck/browser/src/main/res/drawable/zqrcode_drawable_btn.xml" value="0.156" />
         <entry key="..\:/9527/TicketCheck/browser/src/main/res/layout/activity_account_info.xml" value="0.5" />
         <entry key="..\:/9527/TicketCheck/browser/src/main/res/layout/activity_homeapp_phone.xml" value="0.2078125" />
         <entry key="..\:/9527/TicketCheck/browser/src/main/res/layout/activity_main.xml" value="0.18958333333333333" />

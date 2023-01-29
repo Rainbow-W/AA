@@ -28,8 +28,8 @@ android {
         minSdkVersion 24
         targetSdkVersion 30
         multiDexEnabled true
+        versionName "1.6.3"
 
-        flavorDimensions "1"
         ndk {
             abiFilters "mips", "mips64", "x86_64", "armeabi-v7a", "x86", "armeabi", "arm64-v8a"
         }

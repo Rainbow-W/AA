@@ -2,22 +2,17 @@ package com.yunkai.browser.scan;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Vibrator;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
@@ -37,6 +32,8 @@ import java.util.List;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import io.reactivex.Observable;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.ObservableSource;
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -66,7 +63,7 @@ public class ScannerActivity extends AppCompatActivity implements ScanDataImp {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scanner_two);
+        setContentView(R.layout.activity_scanner);
         initData();
         initView();
 
@@ -176,32 +173,31 @@ public class ScannerActivity extends AppCompatActivity implements ScanDataImp {
         alertDialog1.show();
     }
 
+    ScanErrBean scanErr;
     @SuppressLint("HandlerLeak")
     public Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             String toast = (String) msg.obj;
-            ScanErrBean scanErrBean = new Gson().fromJson(toast, ScanErrBean.class);
-            Log.e(TAG, "handleMessage:ScanErrBean = " + scanErrBean.toString());
-            Log.e(TAG, "handleMessage:msg.what = " + msg.what);
+            Log.e(TAG, "handleMessage:msg.obj = " + toast);
             int tpye = msg.what;
+            Log.e(TAG, "handleMessage:msg.what = " + tpye);
             mDisposable.add(Observable
                     .create((ObservableOnSubscribe<Integer>) emitter -> {
-                        Log.e(TAG, "handleMessage:ScanErrBean = " + scanErrBean.toString());
                         switch (tpye) {
                             case 1:
-                                Log.e(TAG, "handleMessage:ScanErrBean = " + scanErrBean.toString());
-                                if (scanErrBean.getErrcode() == 0) {
-                                    if (scanErrBean.getData() != null) {
+                                scanErr = new Gson().fromJson(toast, ScanErrBean.class);
+                                Log.e(TAG, "handleMessage:ScanErrBean = " + scanErr.toString());
+                                if (scanErr.getErrcode() == 0) {
+                                    if (scanErr.getData() != null) {
                                         emitter.onNext(1);
-                                    } else if (scanErrBean.getInfo() != null) {
+                                    } else if (scanErr.getInfo() != null) {
                                         if (playerSuc != null)
                                             playerSuc.start();//播放声音
                                         emitter.onNext(3);
                                     }
-                                } else if (scanErrBean.getErrcode() == 1) {
-                                    Log.e(TAG, "handleMessage:ScanErrBean = " + scanErrBean.toString());
+                                } else if (scanErr.getErrcode() == 1) {
                                     if (playerFai != null) {
                                         playerFai.start();
                                     }
@@ -209,36 +205,45 @@ public class ScannerActivity extends AppCompatActivity implements ScanDataImp {
                                 }
                                 break;
                             case 2:
-                                if (scanErrBean.getErrcode() == 0) {
+                                scanErr = new Gson().fromJson(toast, ScanErrBean.class);
+                                Log.e(TAG, "handleMessage:ScanErrBean = " + scanErr.toString());
+                                if (scanErr.getErrcode() == 0) {
                                     if (playerSuc != null)
                                         playerSuc.start();//播放声音
                                     emitter.onNext(3);
-                                } else if (scanErrBean.getErrcode() == 1) {
+                                } else if (scanErr.getErrcode() == 1) {
                                     if (playerFai != null)
                                         playerFai.start();//播放声音
                                     emitter.onNext(4);
                                 }
                                 break;
+                            case 3:
+                                emitter.onNext(5);
+                                break;
                         }
+                    }).onErrorResumeNext(observer -> {
+                        Log.e(TAG, "handleMessage: 异常 ");
+                        observer.onNext(3);
                     }).subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(state -> {
                         Log.e(TAG, "handleMessage:state =  " + state);
                         switch (state) {
                             case 1:
-                                showListAlertDialog(scanErrBean.getData());
+                                showListAlertDialog(scanErr.getData());
                                 break;
                             case 2:
-                                showCircleDialog(scanErrBean.getErrmsg(), 1);
+                                showCircleDialog(scanErr.getErrmsg(), 1);
                                 break;
                             case 3:
-                                showCircleDialog(scanErrBean.getErrmsg(), 2);
+                                showCircleDialog(scanErr.getErrmsg(), 2);
                                 break;
                             case 4:
-                                showCircleDialog(scanErrBean.getErrmsg(), 1);
+                                showCircleDialog(scanErr.getErrmsg(), 1);
                                 break;
-
-
+                            case 5:
+                                showCircleDialog(toast, 3);
+                                break;
                         }
                     })
             );
@@ -250,19 +255,25 @@ public class ScannerActivity extends AppCompatActivity implements ScanDataImp {
     public Handler handlers = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            if (msg.what == 1) {
-                MemberListDean.MemberDean data = (MemberListDean.MemberDean) msg.obj;
-                Intent intent = new Intent(ScannerActivity.this, AccountInfoActivity.class);
-                // 设置你要传的参数
-                Bundle bundle = new Bundle();
-                bundle.putString("member", new Gson().toJson(data));
-                intent.putExtras(bundle);
-                startActivity(intent);
-                finish();
-            } else if (msg.what == 2) {
-                Toast.makeText(ScannerActivity.this, (String) msg.obj, Toast.LENGTH_LONG).show();
-            }
             super.handleMessage(msg);
+            switch (msg.what) {
+                case 1:
+                    MemberListDean.MemberDean data = (MemberListDean.MemberDean) msg.obj;
+                    Intent intent = new Intent(ScannerActivity.this, AccountInfoActivity.class);
+                    // 设置你要传的参数
+                    Bundle bundle = new Bundle();
+                    bundle.putString("member", new Gson().toJson(data));
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                    finish();
+                    break;
+                case 2:
+                case 3:
+                    Toast.makeText(ScannerActivity.this, (String) msg.obj, Toast.LENGTH_LONG).show();
+                    break;
+
+            }
+
         }
     };
 

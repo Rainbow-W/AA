@@ -140,7 +140,8 @@ public class MeFragment extends Fragment implements View.OnClickListener {
 
                         break;
                     case 1:
-                        Toast.makeText(getActivity(), getResources().getString(R.string.me_input_check), Toast.LENGTH_LONG).show();
+                    case 3:
+                        Toast.makeText(getActivity(), (String) msg.obj, Toast.LENGTH_LONG).show();
                         break;
                 }
             }

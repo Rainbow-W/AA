@@ -1,7 +1,6 @@
 package com.yunkai.browser.activity;
 
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -18,7 +17,7 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.google.gson.Gson;
-import com.taicd.browserIP.R;
+import com.yunkai.browser.R;
 import com.yunkai.browser.nfc.NFCActivity;
 import com.yunkai.browser.okhttp.HttpServer;
 import com.yunkai.browser.okhttp.IcCardPayErr;
@@ -172,7 +171,6 @@ public class AccountInfoActivity extends Activity {
 
     public static Handler handler, handlerTicket, handlerPay;
 
-    @SuppressLint("HandlerLeak")
     public void initHandler() {
         handler = new Handler() {
             @Override

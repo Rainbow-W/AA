@@ -26,7 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.taicd.browserIP.R;
+import com.yunkai.browser.R;
 
 import com.yunkai.browser.fragment.CheckFragment;
 import com.yunkai.browser.fragment.TicketFragment;

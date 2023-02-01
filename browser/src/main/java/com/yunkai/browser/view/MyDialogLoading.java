@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 
-import com.taicd.browserIP.R;
+import com.yunkai.browser.R;
 
 /**
  * Created by Administrator on 2017/11/3.

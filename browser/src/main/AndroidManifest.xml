@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.taicd.browserIP"
+    package="com.yunkai.browser"
     android:sharedUserId="android.uid.system"
     android:versionCode="1"
     android:versionName="1.0.1">
@@ -34,13 +34,6 @@
         <activity android:name="com.yunkai.browser.nfc.NFCActivity" />
         <activity android:name="com.yunkai.browser.scan.ScannerActivity" />
 
-        <!--二维码相关-->
-        <activity
-            android:name="com.yunkai.browser.zxing.app.CaptureActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.yunkai.browser.zxing.app.PreferencesActivity"
-            android:screenOrientation="portrait" />
 
         <!--文件管理器相关authorities="你的包名+fileprovider" --><!-- 打包两个apk的话，要修改包名 -->
         <!--android:authorities="com.bang.ticket.fileprovider"-->

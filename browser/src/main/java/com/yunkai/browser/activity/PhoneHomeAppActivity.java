@@ -23,7 +23,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.taicd.browserIP.R;
+import com.yunkai.browser.R;
 import com.yunkai.browser.fragment.TicketFragment;
 import com.yunkai.browser.fragment.MeFragment;
 import com.yunkai.browser.fragment.CheckFragment;

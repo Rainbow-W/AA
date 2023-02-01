@@ -24,7 +24,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.google.gson.Gson;
-import com.taicd.browserIP.R;
+import com.yunkai.browser.R;
 import com.yunkai.browser.okhttp.HttpServer;
 import com.yunkai.browser.okhttp.UserBean;
 import com.yunkai.browser.utils.ConfigUtil;

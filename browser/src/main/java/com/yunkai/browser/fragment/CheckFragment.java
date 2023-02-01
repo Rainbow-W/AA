@@ -24,7 +24,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.taicd.browserIP.R;
+import com.yunkai.browser.R;
 import com.yunkai.browser.scan.ScannerActivity;
 import com.yunkai.browser.utils.ConfigUtil;
 import com.yunkai.browser.utils.NetBroadcastReceiver;

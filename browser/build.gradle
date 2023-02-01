@@ -17,7 +17,6 @@ android {
         }
     }
     compileSdkVersion 30
-    buildToolsVersion '30.0.2'
     defaultConfig {
 
         applicationId "com.aidegroup.ticket"
@@ -42,27 +41,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
-
-}
-
-
-repositories {
-    flatDir { dirs 'libs' }
-    maven {
-        url 'https://maven.google.com/'
-        name 'Google'
-    }
-    allprojects {
-        repositories {
-            maven { url "https://jitpack.io" }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
         }
     }
-}
 
+}
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')

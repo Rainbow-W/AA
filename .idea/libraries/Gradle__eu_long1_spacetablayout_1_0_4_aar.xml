@@ -34,12 +34,17 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5d2e6aa1bfcde7ddcc11b18d30ed78a2/jetified-spacetablayout-1.0.4/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5d2e6aa1bfcde7ddcc11b18d30ed78a2/jetified-spacetablayout-1.0.4/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5d2e6aa1bfcde7ddcc11b18d30ed78a2/jetified-spacetablayout-1.0.4/res" />
+      <root url="jar://$USER_HOME$/.android/caches/transforms-3/f683360c60066402faf0f16a0d8f5957/transformed/jetified-spacetablayout-1.0.4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/caches/transforms-3/f683360c60066402faf0f16a0d8f5957/transformed/jetified-spacetablayout-1.0.4/res" />
+      <root url="file://$USER_HOME$/.android/caches/transforms-3/f683360c60066402faf0f16a0d8f5957/transformed/jetified-spacetablayout-1.0.4/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/eu.long1/spacetablayout/1.0.4/6ef6e939856882af0b5aa5383266955a89d91e73/spacetablayout-1.0.4-javadoc.jar!/" />
+      <root url="jar://$USER_HOME$/.android/caches/modules-2/files-2.1/eu.long1/spacetablayout/1.0.4/6ef6e939856882af0b5aa5383266955a89d91e73/spacetablayout-1.0.4-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/eu.long1/spacetablayout/1.0.4/ab46345b1d254207ae1782e0fa569f1749ef15ec/spacetablayout-1.0.4-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.android/caches/modules-2/files-2.1/eu.long1/spacetablayout/1.0.4/ab46345b1d254207ae1782e0fa569f1749ef15ec/spacetablayout-1.0.4-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

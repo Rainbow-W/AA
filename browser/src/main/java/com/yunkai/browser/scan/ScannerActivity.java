@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
-import com.taicd.browserIP.R;
+import com.yunkai.browser.R;
 import com.yunkai.browser.activity.AccountInfoActivity;
 import com.yunkai.browser.okhttp.HttpServer;
 import com.yunkai.browser.okhttp.MemberListDean;

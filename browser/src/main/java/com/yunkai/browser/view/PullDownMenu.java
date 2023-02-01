@@ -15,7 +15,7 @@ import android.widget.PopupWindow;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import com.taicd.browserIP.R;
+import com.yunkai.browser.R;
 import com.yunkai.browser.activity.AccountInfoActivity;
 
 import java.util.ArrayList;

@@ -16,7 +16,7 @@ import android.view.View;
 
 import androidx.annotation.IntDef;
 
-import com.taicd.browserIP.R;
+import com.yunkai.browser.R;
 
 
 /**

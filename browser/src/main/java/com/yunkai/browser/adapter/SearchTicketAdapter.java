@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.taicd.browserIP.R;
+import com.yunkai.browser.R;
 import com.yunkai.browser.utils.SearchTicketInfor;
 
 import java.util.List;

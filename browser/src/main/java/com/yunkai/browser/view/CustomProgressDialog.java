@@ -13,7 +13,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.taicd.browserIP.R;
+import com.yunkai.browser.R;
 
 
 /**

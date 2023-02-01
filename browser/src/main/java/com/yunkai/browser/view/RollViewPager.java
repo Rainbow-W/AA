@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.taicd.browserIP.R;
+import com.yunkai.browser.R;
 
 
 /**

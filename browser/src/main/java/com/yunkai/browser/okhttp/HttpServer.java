@@ -246,13 +246,14 @@ public class HttpServer {
     /**
      * 获取门票列表
      *
-     * @param handler
+     * @param type    机器类型
+     * @param handler 通信
      */
-    public void getTicketsList(final Handler handler, String userid) {
+    public void getTicketsList(final Handler handler, String type) {
 
         String strUrl = HOST2 + "/Api/PdaDevice/getTicketsList";
         FormBody formBody = new FormBody.Builder()
-                .add("userid", userid)
+                .add("type", type)
                 .build();
 
         final Request request = new Request.Builder().url(strUrl).post(formBody).build();
@@ -290,7 +291,6 @@ public class HttpServer {
 
     /**
      * 结算
-     *
      */
     public void Settlement(String cardnum, String ticketid, String userid, String imei_num, Handler handler) {
         String strUrl = HOST2 + "/Api/PdaDevice/payByIcCard";

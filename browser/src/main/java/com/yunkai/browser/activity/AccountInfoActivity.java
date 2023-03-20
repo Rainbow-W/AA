@@ -114,7 +114,7 @@ public class AccountInfoActivity extends Activity {
         playerSuc = MediaPlayer.create(getApplicationContext(), R.raw.chenggong);//声音初始化
         playerFai = MediaPlayer.create(getApplicationContext(), R.raw.shibai);//声音初始化
 
-        HttpServer.getInstance(this).getTicketsList(handler, userBean.getClerkid());
+        HttpServer.getInstance(this).getTicketsList(handler, "0");
 
         cardnum = data.getCardnum();
         for (int i = 0; i < 9; i++) {

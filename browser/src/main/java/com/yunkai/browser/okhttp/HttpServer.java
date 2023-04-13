@@ -47,8 +47,8 @@ public class HttpServer {
                             .connectTimeout(30, TimeUnit.SECONDS)//设置连接超时时间
                             .readTimeout(15, TimeUnit.SECONDS)//设置读取超时时间
                             .build();
-                    HOST1 = "http://" + ConfigUtil.getUrl(context) + "ad.aidegroup.cn/";
-                    HOST2 = "http://" + ConfigUtil.getUrl(context) + "qt.aidegroup.cn/";
+                    HOST1 = "http://" + ConfigUtil.getUrl(context) + "ad.18bang.cn/";
+                    HOST2 = "http://" + ConfigUtil.getUrl(context) + "qt.18bang.cn";
                 }
             }
         }

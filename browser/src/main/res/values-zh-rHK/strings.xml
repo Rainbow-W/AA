@@ -3,7 +3,7 @@
 
     <string name="check_update_url">http://www.taicd.com/update/version_yunhuiyi.xml</string>
 
-
+    <string name="app_name">爱德爱游乐</string>
     <string name="account_title">愛德科技-景區遊樂園運營專家</string>
     <string name="account_info">會員信息</string>
     <string name="account_fault">會員信息</string>

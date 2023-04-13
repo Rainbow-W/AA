@@ -18,13 +18,8 @@ android {
     }
     compileSdkVersion 30
     defaultConfig {
-
-        applicationId "com.aidegroup.ticket"
-        manifestPlaceholders = [ENVIRONMENT: "app1",
-                                app_icon   : "@drawable/icon",
-                                app_name   : "愛德愛遊樂"]
-
-        minSdkVersion 24
+        applicationId "com.yunkai.browser"
+        minSdkVersion 22
         targetSdkVersion 30
         multiDexEnabled true
         versionName "1.6.3"

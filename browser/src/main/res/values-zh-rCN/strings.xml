@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="app_name">爱德爱游乐</string>
     <string name="check_update_url">http://www.taicd.com/update/version_yunhuiyi.xml</string>
     <string name="account_title">爱德科技-景区游乐园运营专家</string>
     <string name="account_info">会员信息</string>

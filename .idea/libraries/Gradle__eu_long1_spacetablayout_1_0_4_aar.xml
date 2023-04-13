@@ -40,13 +40,17 @@
       <root url="file://$USER_HOME$/.android/caches/transforms-3/edc6296998f6897349df3e0bac13a9fb/transformed/jetified-spacetablayout-1.0.4/res" />
       <root url="file://$USER_HOME$/.android/caches/transforms-3/edc6296998f6897349df3e0bac13a9fb/transformed/jetified-spacetablayout-1.0.4/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.android/caches/transforms-3/edc6296998f6897349df3e0bac13a9fb/transformed/jetified-spacetablayout-1.0.4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/caches/transforms-3/bb0a355dc9e2ade08830bfbbaf7e25b0/transformed/jetified-spacetablayout-1.0.4/res" />
+      <root url="file://$USER_HOME$/.android/caches/transforms-3/bb0a355dc9e2ade08830bfbbaf7e25b0/transformed/jetified-spacetablayout-1.0.4/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.android/caches/transforms-3/bb0a355dc9e2ade08830bfbbaf7e25b0/transformed/jetified-spacetablayout-1.0.4/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/caches/transforms-3/76ab520550ac316bd4be0e2c81d49a14/transformed/jetified-spacetablayout-1.0.4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/caches/transforms-3/76ab520550ac316bd4be0e2c81d49a14/transformed/jetified-spacetablayout-1.0.4/res" />
+      <root url="file://$USER_HOME$/.android/caches/transforms-3/76ab520550ac316bd4be0e2c81d49a14/transformed/jetified-spacetablayout-1.0.4/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/eu.long1/spacetablayout/1.0.4/6ef6e939856882af0b5aa5383266955a89d91e73/spacetablayout-1.0.4-javadoc.jar!/" />
       <root url="jar://$USER_HOME$/.android/caches/modules-2/files-2.1/eu.long1/spacetablayout/1.0.4/6ef6e939856882af0b5aa5383266955a89d91e73/spacetablayout-1.0.4-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/eu.long1/spacetablayout/1.0.4/ab46345b1d254207ae1782e0fa569f1749ef15ec/spacetablayout-1.0.4-sources.jar!/" />
       <root url="jar://$USER_HOME$/.android/caches/modules-2/files-2.1/eu.long1/spacetablayout/1.0.4/ab46345b1d254207ae1782e0fa569f1749ef15ec/spacetablayout-1.0.4-sources.jar!/" />
     </SOURCES>
   </library>

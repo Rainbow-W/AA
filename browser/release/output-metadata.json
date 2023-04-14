@@ -4,14 +4,14 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.aidegroup.ticket",
+  "applicationId": "com.yunkai.browser",
   "variantName": "release",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 1,
+      "versionCode": 0,
       "versionName": "1.6.3",
       "outputFile": "browser-release.apk"
     }

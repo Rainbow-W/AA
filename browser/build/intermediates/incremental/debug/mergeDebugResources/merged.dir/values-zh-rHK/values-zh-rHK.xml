@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"瀏覽主頁"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"向上瀏覽"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"更多選項"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"完成"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"查看全部"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"選擇應用程式"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"關閉"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"開啟"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt +"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl +"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"刪除"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"Enter 鍵"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Fn +"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta +"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift +"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"空白鍵"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym +"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu +"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"搜尋…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"清除查詢"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"搜尋查詢"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"搜尋"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"提交查詢"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"語音搜尋"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"分享對象"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"使用「<ns1:g id="APPLICATION_NAME">%s</ns1:g>」分享"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"收合"</string>
+    <string name="account_IC">IC卡讀取會員信息</string>
+    <string name="account_QR_code">二維碼讀取會員信息</string>
+    <string name="account_card">會員卡</string>
+    <string name="account_class">分類</string>
+    <string name="account_content">內容</string>
+    <string name="account_fault">會員信息</string>
+    <string name="account_info">會員信息</string>
+    <string name="account_info_credit1">積分:</string>
+    <string name="account_info_credit2">餘額:</string>
+    <string name="account_info_num">卡號:</string>
+    <string name="account_info_total">總金額：</string>
+    <string name="account_info_yuan">元</string>
+    <string name="account_ok">確認</string>
+    <string name="account_pay_suc">支付成功</string>
+    <string name="account_scan">二維碼掃描</string>
+    <string name="account_ticket">門票</string>
+    <string name="account_title">愛德科技-景區遊樂園運營專家</string>
+    <string name="app_name">爱德爱游乐</string>
+    <string name="button_ok">OK</string>
+    <string name="check_IC_card">進行IC卡驗證</string>
+    <string name="check_account_error">讀取會員信息失敗</string>
+    <string name="check_login">請先登錄賬號</string>
+    <string name="check_net">請鏈接網絡</string>
+    <string name="check_open_camera">請在應用管理中打開“相機”訪問權限！</string>
+    <string name="check_scan">二維碼掃描認證</string>
+    <string name="check_search">查詢</string>
+    <string name="check_update_url">http://www.taicd.com/update/version_yunhuiyi.xml</string>
+    <string name="contents_contact">Contact info</string>
+    <string name="contents_email">Email address</string>
+    <string name="contents_location">Geographic coordinates</string>
+    <string name="contents_phone">Phone number</string>
+    <string name="contents_sms">SMS address</string>
+    <string name="contents_text">Plain text</string>
+    <string name="home_account">會員</string>
+    <string name="home_check">檢票</string>
+    <string name="home_quit">再按一次退出程序</string>
+    <string name="home_set">設置</string>
+    <string name="me_input_check">登錄失敗，請檢查用戶名和密碼</string>
+    <string name="me_input_tip">請輸入用戶名和密碼</string>
+    <string name="me_login">確認登錄</string>
+    <string name="me_name">登錄名</string>
+    <string name="me_name_tip">請輸入用戶名</string>
+    <string name="me_pw">登錄密碼</string>
+    <string name="me_pw_tip">請輸入密碼</string>
+    <string name="me_quit">退出登錄</string>
+    <string name="msg_bulk_mode_scanned">Bulk mode: barcode scanned and saved</string>
+    <string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the
+        device.
+    </string>
+    <string name="nfc_tip">把IC卡貼在機器前方檢測區域</string>
+    <string name="preferences_actions_title">When a barcode is found\u2026</string>
+    <string name="preferences_copy_to_clipboard_title">Copy to clipboard</string>
+    <string name="preferences_decode_1D_title">1D barcodes</string>
+    <string name="preferences_decode_Data_Matrix_title">Data Matrix</string>
+    <string name="preferences_decode_QR_title">QR Codes</string>
+    <string name="preferences_play_beep">preferences_play_beep</string>
+    <string name="preferences_play_beep_title">Beep</string>
+    <string name="preferences_remember_duplicates_summary">Store multiple scans of the same barcode in History</string>
+    <string name="preferences_remember_duplicates_title">Remember duplicates</string>
+    <string name="preferences_scanning_title">When scanning for barcodes, decode\u2026</string>
+    <string name="preferences_supplemental_summary">Try to retrieve more information about the barcode contents</string>
+    <string name="preferences_supplemental_title">Retrieve more info</string>
+    <string name="preferences_vibrate">preferences_vibrate</string>
+    <string name="preferences_vibrate_title">Vibrate</string>
+    <string name="preview_msg"> preview pages available,click Download for more.</string>
+    <string name="scan_check_continue">繼續掃描</string>
+    <string name="scan_check_error">檢票失敗：</string>
+    <string name="scan_check_quit">退出掃描</string>
+    <string name="scan_check_title">檢票結果</string>
+    <string name="scan_choose">請選擇項目</string>
+    <string name="scan_clean">清空</string>
+    <string name="scan_error">綁定失敗</string>
+    <string name="scan_error_error">失敗了!!</string>
+    <string name="scan_error_noinfo">檢票失敗：獲取信息失敗</string>
+    <string name="scan_func_set">功能設置</string>
+    <string name="scan_product">產品說明</string>
+    <string name="scan_scan">掃描</string>
+    <string name="scan_service_error">服務綁定失敗</string>
+    <string name="scan_suc">服務綁定成功</string>
+    <string name="scan_suc_suc">成功</string>
+    <string name="scan_text">放入框中即可进行二维码扫描</string>
+    <string name="scan_tips">tips:點擊下方掃描或者按鈕“Scan”橙色按鈕進行掃描</string>
+    <string name="search_back">返回</string>
+    <string name="search_class">檢票渠道：</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"搜尋"</string>
+    <string name="search_print">打印</string>
+    <string name="search_ticket_name">票名：</string>
+    <string name="search_time">檢票時間：</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="url_check_qr">/Api/PdaDevice/inspectTicket</string>
+    <string name="url_check_qrpac">/Api/PdaDevice/inspectTicket</string>
+    <string name="url_post">/Api/PdaDevice/activatePdaDevice</string>
+    <string name="url_post_ic">/Api/PdaDevice/getMemberInfo</string>
+    <string name="url_post_ic_nfc">/Api/PdaDevice/getMemberInfo</string>
+    <string name="url_post_ic_pay">/Api/PdaDevice/payByIcCard</string>
+    <string name="url_post_login">/Api/PdaDevice/loginPdaDevice</string>
+    <string name="url_search">/Api/PdaDevice/getTicketUsage</string>
+    <string name="url_ticket_list">/Api/PdaDevice/getTicketsList</string>
+</resources>

@@ -1,6 +1,7 @@
 package com.yunkai.browser.activity;
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -171,6 +172,7 @@ public class AccountInfoActivity extends Activity {
 
     public static Handler handler, handlerTicket, handlerPay;
 
+    @SuppressLint("HandlerLeak")
     public void initHandler() {
         handler = new Handler() {
             @Override
@@ -183,6 +185,7 @@ public class AccountInfoActivity extends Activity {
                         break;
                     case 2:
                         tickets = (List<TicketsList.Tickets>) msg.obj;
+                        if (tickets == null || tickets.size() <= 0) return;
                         Log.e(TAG, "handleMessage: listName" + tickets.toString());
                         Log.e(TAG, "handleMessage: listName.size" + tickets.size());
                         listName.clear();

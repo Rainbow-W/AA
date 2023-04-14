@@ -1,0 +1,650 @@
+[
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_activity_main.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-hdpi_flg.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-hdpi/flg.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_tv_off.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/tv_off.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_aide_logo2.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/aide_logo2.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_phone_shape_title_corner.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/phone_shape_title_corner.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_tv_on.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/tv_on.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_image_login_btn_notselect.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/image_login_btn_notselect.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_piitem_phone.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/piitem_phone.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_fragment_me.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/fragment_me.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_kefu.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_kefu.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_banner_point_select.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/banner_point_select.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_icon2.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/icon2.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_check.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_check.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_selector_login_btn.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/selector_login_btn.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_progress_loading_image_02.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/progress_loading_image_02.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-hdpi_flf.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-hdpi/flf.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_me.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_me.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-hdpi_fas.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-hdpi/fas.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_shape_account_info.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/shape_account_info.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_clear.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/clear.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_activity_homeapp_phone.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/activity_homeapp_phone.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_clarity.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/clarity.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_shape_corner_button.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/shape_corner_button.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_onoff.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/onoff.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_local_file.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_local_file.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_zphoto_drawable_btn.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/zphoto_drawable_btn.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_shape_scan.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/shape_scan.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_shape_corner.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/shape_corner.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_meeting.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_meeting.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_phone_qrcode.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_phone_qrcode.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_notice.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_notice.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_progress_loading_image_01.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/progress_loading_image_01.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_tv_on.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/tv_on.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_loading_01.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/loading_01.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/raw_chenggong.mp3.flat",
+        "source": "com.yunkai.browser-main-20:/raw/chenggong.mp3"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_content_main.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/content_main.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_loading_03.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/loading_03.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_dialog_style_xml_icon.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/dialog_style_xml_icon.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/xml_filepaths.xml.flat",
+        "source": "com.yunkai.browser-main-20:/xml/filepaths.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_frame.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/frame.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_down.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/down.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_me_selected.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_me_selected.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_micro.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/micro.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_denglu.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/denglu.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_radio_micro_on.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/radio_micro_on.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_tv_off.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/tv_off.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_colleague.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_colleague.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_set.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/set.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_pic_cardic.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/pic_cardic.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_shape_scan_white.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/shape_scan_white.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_whiteboard.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_whiteboard.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/xml_preferences.xml.flat",
+        "source": "com.yunkai.browser-main-20:/xml/preferences.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_search_info_shape_corner.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/search_info_shape_corner.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_welcome.jpg.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/welcome.jpg"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_usb_file.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_usb_file.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_colleague_selected.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_colleague_selected.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_image_login_use.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/image_login_use.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/anim_fade_in.xml.flat",
+        "source": "com.yunkai.browser-main-20:/anim/fade_in.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_nfc.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/nfc.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_icon2.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/icon2.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_clear.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/clear.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_set_back.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/set_back.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_onoff.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/onoff.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_bg_banner.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/bg_banner.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-hdpi_flh.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-hdpi/flh.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_set_back.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/set_back.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_shape_button.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/shape_button.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_icon.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/icon.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_update.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/update.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_fenguo_welcome.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_fenguo_welcome.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_loading_06.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/loading_06.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_meeting_manager.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_meeting_manager.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_fragment_check.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/fragment_check.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-hdpi_fat.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-hdpi/fat.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_no_wifi.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/no_wifi.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-hdpi_fle.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-hdpi/fle.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_activity_account_info.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/activity_account_info.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_zqrcode_drawable_btn.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/zqrcode_drawable_btn.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_check_selected.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_check_selected.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_browser.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_browser.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_mm_trans.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/mm_trans.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_pic_cardscan.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/pic_cardscan.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_loading_05.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/loading_05.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_nfcitem.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/nfcitem.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_pop_menuitem.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/pop_menuitem.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-hdpi_flk.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-hdpi/flk.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_ad_loading.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_ad_loading.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_nomaskripple.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/nomaskripple.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_bg_guide.jpg.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/bg_guide.jpg"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_icon.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/icon.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_improve.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_improve.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_intr.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_intr.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/raw_beep.ogg.flat",
+        "source": "com.yunkai.browser-main-20:/raw/beep.ogg"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_item_search_info.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/item_search_info.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/color_text_login_color_selector.xml.flat",
+        "source": "com.yunkai.browser-main-20:/color/text_login_color_selector.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_pen.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_pen.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_notice_logo.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_notice_logo.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_zflash_drawable_btn.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/zflash_drawable_btn.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/anim_fade_out.xml.flat",
+        "source": "com.yunkai.browser-main-20:/anim/fade_out.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_radio_micro_off.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/radio_micro_off.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_update.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/update.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_loading_04.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/loading_04.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_pop_menulist.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/pop_menulist.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_huiyuan.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/huiyuan.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-hdpi_flj.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-hdpi/flj.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-hdpi_icon2.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-hdpi/icon2.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_search.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/search.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_bk_item_pressed.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/bk_item_pressed.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_shape_scan_gray.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/shape_scan_gray.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_viewpager_item.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/viewpager_item.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_tx_login.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/tx_login.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_frame2.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/frame2.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_app_loading1.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/app_loading1.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_radio_microphone.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/radio_microphone.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_dialog_style_xml_color.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/dialog_style_xml_color.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_aide_logo.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/aide_logo.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_pull_down_menu_layout.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/pull_down_menu_layout.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_fragment_ticket.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/fragment_ticket.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_layout_loading_dialog.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/layout_loading_dialog.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_step.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/step.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_welcome.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_welcome.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-hdpi_fli.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-hdpi/fli.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_banner_point.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/banner_point.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_shape_ticket.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/shape_ticket.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/raw_shibai.mp3.flat",
+        "source": "com.yunkai.browser-main-20:/raw/shibai.mp3"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_saomiao.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/saomiao.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_piitem.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/piitem.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_set.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/set.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_loading_07.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/loading_07.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_ratio.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/ratio.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_bg_list_item_pop.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/bg_list_item_pop.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_dot_focus.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/dot_focus.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_set.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_set.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_app_loading0.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/app_loading0.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_ticket.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_ticket.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_smart_forms.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_smart_forms.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_ticket_selected.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_ticket_selected.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_shape_corner_image.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/shape_corner_image.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_clarity.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/clarity.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_edit_shape_line.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/edit_shape_line.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_loading.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/loading.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_loading_process_dialog_anim.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/loading_process_dialog_anim.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_search.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/search.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_notice_selected.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_notice_selected.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-hdpi_icon.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-hdpi/icon.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_up.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/up.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_loading_02.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/loading_02.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_user_0.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/user_0.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_task_manager.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_task_manager.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_progress_dialog.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/progress_dialog.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/layout_activity_scanner.xml.flat",
+        "source": "com.yunkai.browser-main-20:/layout/activity_scanner.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_shenpi.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_shenpi.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_shape.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/shape.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_aide2.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/aide2.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_image_login_btn_selected.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/image_login_btn_selected.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_dot_normal.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/dot_normal.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_zmm_title_back_btn.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/zmm_title_back_btn.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_shape_bg_pop.xml.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/shape_bg_pop.xml"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xxhdpi_aide.jpg.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xxhdpi/aide.jpg"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable-xhdpi_pic_cloud_file.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable-xhdpi/pic_cloud_file.png"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/raw_scan.ogg.flat",
+        "source": "com.yunkai.browser-main-20:/raw/scan.ogg"
+    },
+    {
+        "merged": "com.yunkai.browser-merged_res-18:/drawable_dialog_progress_round.png.flat",
+        "source": "com.yunkai.browser-main-20:/drawable/dialog_progress_round.png"
+    }
+]
